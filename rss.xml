@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+      <title>Interstellar Boats</title>
+      <link>https://interstellar.boats</link>
+      <description>Code, Dumb Jokes, Loose Space Themes, etc. </description>
+      <generator>Zola</generator>
+      <language>en</language>
+      <atom:link href="https://interstellar.boats/rss.xml" rel="self" type="application/rss+xml"/>
+      <lastBuildDate>Sun, 31 Dec 2023 00:00:00 +0000</lastBuildDate>
+      <item>
+          <title>Stop the Music.app</title>
+          <pubDate>Sun, 31 Dec 2023 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://interstellar.boats/music.app/</link>
+          <guid>https://interstellar.boats/music.app/</guid>
+          <description>&lt;p&gt;Apple does not provide an option to rebind &lt;i class=&quot;unset&quot; title=&quot;Also referred to as the button located on the F8 key, may require the fn key to be pressed in order to activate.&quot;&gt;&lt;code&gt;⏯&lt;&#x2F;code&gt;&lt;&#x2F;i&gt;, also known as the &lt;i class=&quot;unset&quot; title=&quot;Also referred to as the button located on the F8 key, may require the fn key to be pressed in order to activate.&quot;&gt;&lt;code&gt;Play&#x2F;Pause&lt;&#x2F;code&gt; button&lt;&#x2F;i&gt;. By default it opens &lt;a href=&quot;https:&#x2F;&#x2F;support.apple.com&#x2F;guide&#x2F;music&#x2F;welcome&#x2F;mac&quot;&gt;Music.app&lt;&#x2F;a&gt; when nothing is playing, whereas I would prefer that it open &lt;i class=&quot;spotify unset&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;open.spotify.com&#x2F;?&quot;&gt;Spotify&lt;&#x2F;a&gt;&lt;&#x2F;i&gt; and resume playback&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#1&quot;&gt;1&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;tombonez&#x2F;noTunes&quot;&gt;noTunes&lt;&#x2F;a&gt; exists as a dedicated app to solve this problem. Unfortunately it did not work for me. It &lt;em&gt;did&lt;&#x2F;em&gt; block &lt;a href=&quot;https:&#x2F;&#x2F;support.apple.com&#x2F;guide&#x2F;music&#x2F;welcome&#x2F;mac&quot;&gt;Music.app&lt;&#x2F;a&gt; from opening but there was an issue around launching and starting &lt;i class=&quot;spotify unset&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;open.spotify.com&#x2F;?&quot;&gt;Spotify&lt;&#x2F;a&gt;&lt;&#x2F;i&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;It is probably possible for &lt;a href=&quot;https:&#x2F;&#x2F;github.com&#x2F;tombonez&#x2F;noTunes&quot;&gt;noTunes&lt;&#x2F;a&gt; to perform perfectly, however I searched on for a &lt;i class=&quot;unset&quot; title=&quot;I want this to actually solve all of my life&#x27;s problems, not just the music app.&quot;&gt; more general solution instead.&lt;&#x2F;i&gt; (&lt;em&gt;&lt;a href=&quot;https:&#x2F;&#x2F;support.apple.com&#x2F;guide&#x2F;music&#x2F;welcome&#x2F;mac&quot;&gt;Music.app&lt;&#x2F;a&gt; is not the only &lt;a href=&quot;https:&#x2F;&#x2F;interstellar.boats&#x2F;music.app&#x2F;#the-notes-app&quot;&gt;default app&lt;&#x2F;a&gt; I would rather not use&lt;&#x2F;em&gt;) If this or another solution&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#2&quot;&gt;2&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt; works for you: &lt;i class=&quot;unset&quot; title=&quot;This is genuine.&quot;&gt;&lt;strong&gt;Great!&lt;&#x2F;strong&gt;&lt;&#x2F;i&gt;. Operating correctly&lt;i class=&quot;unset&quot; title=&quot;Peter&#x27;s Comma Correction Suggestion&quot;&gt;,&lt;&#x2F;i&gt; it almost certainly would be a smoother experience.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;the-fix&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;interstellar.boats&#x2F;music.app&#x2F;#the-fix&quot;&gt;The Fix&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+&lt;p&gt;The &lt;i class=&quot;unset&quot; title=&quot;forever finding fun in forming phrases...&quot;&gt;forage for a finer fix followed another flow, and for a patchwork solution the final result functions fairly well&lt;&#x2F;i&gt;. It pairs Apple&#x27;s &lt;a href=&quot;https:&#x2F;&#x2F;apps.apple.com&#x2F;us&#x2F;app&#x2F;shortcuts&#x2F;id915249335&quot;&gt;Shortcuts&lt;&#x2F;a&gt;, which handles the applications, with &lt;a href=&quot;https:&#x2F;&#x2F;www.lgerckens.de&#x2F;shortery&#x2F;&quot;&gt;Shortery&lt;&#x2F;a&gt; as a trigger, and is completed by running a small &lt;a href=&quot;https:&#x2F;&#x2F;developer.apple.com&#x2F;library&#x2F;archive&#x2F;documentation&#x2F;AppleScript&#x2F;Conceptual&#x2F;AppleScriptLangGuide&#x2F;introduction&#x2F;ASLR_intro.html&quot;&gt;AppleScript&lt;&#x2F;a&gt; to start the music.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;First&lt;&#x2F;strong&gt; we need &lt;a href=&quot;https:&#x2F;&#x2F;www.icloud.com&#x2F;shortcuts&#x2F;113f5fa3b9be4e2da5c20481f5fac045&quot;&gt;the shortcut&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https:&#x2F;&#x2F;www.icloud.com&#x2F;shortcuts&#x2F;113f5fa3b9be4e2da5c20481f5fac045&quot;&gt;Here the shortcut is shared through iCloud, and includes the few lines of necessary AppleScript.&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;p&gt;It will:&lt;&#x2F;p&gt;
+&lt;ol&gt;
+&lt;li&gt;Launch and Focus &lt;i class=&quot;spotify unset&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;open.spotify.com&#x2F;?&quot;&gt;Spotify&lt;&#x2F;a&gt;&lt;&#x2F;i&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Run the few lines of &lt;a href=&quot;https:&#x2F;&#x2F;developer.apple.com&#x2F;library&#x2F;archive&#x2F;documentation&#x2F;AppleScript&#x2F;Conceptual&#x2F;AppleScriptLangGuide&#x2F;introduction&#x2F;ASLR_intro.html&quot;&gt;AppleScript&lt;&#x2F;a&gt; which send a &lt;i class=&quot;unset&quot; title=&quot;I trust you know to know what this key is.&quot;&gt;&lt;code&gt;Space Bar&lt;&#x2F;code&gt;&lt;&#x2F;i&gt; key press to &lt;i class=&quot;spotify unset&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;open.spotify.com&#x2F;?&quot;&gt;Spotify&lt;&#x2F;a&gt;&lt;&#x2F;i&gt;&lt;&#x2F;li&gt;
+&lt;li&gt;Hide and Quit &lt;a href=&quot;https:&#x2F;&#x2F;support.apple.com&#x2F;guide&#x2F;music&#x2F;welcome&#x2F;mac&quot;&gt;Music.app&lt;&#x2F;a&gt;&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;This may look a bit out of order, but the time it takes for &lt;a href=&quot;https:&#x2F;&#x2F;support.apple.com&#x2F;guide&#x2F;music&#x2F;welcome&#x2F;mac&quot;&gt;Music.app&lt;&#x2F;a&gt; to launch is better spent starting &lt;i class=&quot;spotify unset&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;open.spotify.com&#x2F;?&quot;&gt;Spotify&lt;&#x2F;a&gt;&lt;&#x2F;i&gt; and beginning playback. Cleanup can occur hidden in the background.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Second&lt;&#x2F;strong&gt; step is to setup &lt;a href=&quot;https:&#x2F;&#x2F;www.lgerckens.de&#x2F;shortery&#x2F;&quot;&gt;Shortery&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;i class=&quot;shortery&quot; &gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;pictures&#x2F;musicapp&#x2F;shortery.png&quot; alt=&quot;Screenshot of Shortery as it should configured to run on launch of an application&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;i&gt;
+Here &lt;u&gt;⊕ Add Shortcut Trigger&lt;&#x2F;u&gt; and select:
+&lt;ol&gt;
+&lt;li&gt;&lt;u&gt;Application&lt;&#x2F;u&gt; as the trigger type&lt;&#x2F;li&gt;
+&lt;li&gt;Our &lt;u&gt;No Music&lt;&#x2F;u&gt; shortcut.&lt;&#x2F;li&gt;
+&lt;li&gt;&lt;u&gt;&lt;a href=&quot;https:&#x2F;&#x2F;support.apple.com&#x2F;guide&#x2F;music&#x2F;welcome&#x2F;mac&quot;&gt;Music.app&lt;&#x2F;a&gt;&lt;&#x2F;u&gt; as the Application&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;p&gt;This only runs when the music app launches, keeping our shortcut simple and allowing all other default behavior of &lt;i class=&quot;unset&quot; title=&quot;Also known as the Play&#x2F;Pause button, which shares a key with F8, so may require fn.&quot;&gt;&lt;code&gt;⏯&lt;&#x2F;code&gt;&lt;&#x2F;i&gt; can remain.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;strong&gt;Note:&lt;&#x2F;strong&gt;&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;You will need to &lt;u&gt;Allow Running Scripts&lt;&#x2F;u&gt; in &lt;a href=&quot;https:&#x2F;&#x2F;apps.apple.com&#x2F;us&#x2F;app&#x2F;shortcuts&#x2F;id915249335&quot;&gt;Shortcuts&lt;&#x2F;a&gt; under &lt;code&gt;Settings... &amp;gt; Advanced&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;
+&lt;p&gt;You will &lt;em&gt;also&lt;&#x2F;em&gt; need to click accept on a few automation and accessibility access alerts, needed to send the key press, and watch for application launches.&lt;&#x2F;p&gt;
+&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h2 id=&quot;other-instances-of-music-app&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;interstellar.boats&#x2F;music.app&#x2F;#other-instances-of-music-app&quot;&gt;Other Instances of Music.app&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+&lt;p&gt;The above automation solves the primary keyboard issue at hand, however it still launches as the default player for any audio files. This &lt;em&gt;&lt;strong&gt;will&lt;&#x2F;strong&gt;&lt;&#x2F;em&gt; be annoying as with this shortcut setup the music app will quit every time it opens.&lt;&#x2F;p&gt;
+&lt;p&gt;Luckily Apple has allowed the ability to adjust this to &lt;a href=&quot;https:&#x2F;&#x2F;www.videolan.org&#x2F;vlc&#x2F;&quot;&gt;another app&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;The obvious flow in finder (&lt;code&gt;Open with &amp;gt; Other... &amp;gt; VLC&lt;&#x2F;code&gt;) does not provide the option to change the default for &lt;strong&gt;all files&lt;&#x2F;strong&gt; of that type. This only opens that specific file in &lt;a href=&quot;https:&#x2F;&#x2F;www.videolan.org&#x2F;vlc&#x2F;&quot;&gt;VLC&lt;&#x2F;a&gt;, &lt;a href=&quot;https:&#x2F;&#x2F;apple.stackexchange.com&#x2F;questions&#x2F;182871&#x2F;i-want-to-make-vlc-my-default-player-on-mac-os-x-10-10-3&quot;&gt;however as described here&lt;&#x2F;a&gt; the less obvious flow can be used:&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;code&gt;Right Click &amp;gt; Get Info &amp;gt; Open With: VLC &amp;gt; Change All...&lt;&#x2F;code&gt;&lt;&#x2F;p&gt;
+&lt;p&gt;This must be done for each file &lt;strong&gt;type&lt;&#x2F;strong&gt; but &lt;em&gt;eventually&lt;&#x2F;em&gt; we will run out of new file types to update, and this will not be an issue.&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;h2 id=&quot;the-notes-app&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;interstellar.boats&#x2F;music.app&#x2F;#the-notes-app&quot;&gt;The Notes.app&lt;&#x2F;a&gt;&lt;&#x2F;h2&gt;
+&lt;p&gt;I wrote this post in &lt;i class=&quot;obsidian unset&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;obsidian.md&#x2F;&quot;&gt;Obsidian&lt;&#x2F;a&gt;&lt;&#x2F;i&gt;; which is where I handle all of my notes. I do &lt;em&gt;not&lt;&#x2F;em&gt; use the included &lt;a href=&quot;https:&#x2F;&#x2F;support.apple.com&#x2F;guide&#x2F;notes&#x2F;welcome&#x2F;mac&quot;&gt;Notes.app&lt;&#x2F;a&gt;, but do like the &lt;a href=&quot;https:&#x2F;&#x2F;support.apple.com&#x2F;guide&#x2F;mac-help&#x2F;use-hot-corners-mchlp3000&#x2F;mac&quot;&gt;Hot Corner Shortcut&lt;&#x2F;a&gt; that exists for it. It would be more useful if it could launch &lt;i class=&quot;obsidian unset&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;obsidian.md&#x2F;&quot;&gt;Obsidian&lt;&#x2F;a&gt;&lt;&#x2F;i&gt;. Unfortunately that shortcut is limited to only a few actions.&lt;&#x2F;p&gt;
+&lt;i class=&quot;hot-corner&quot; &gt;
+&lt;p&gt;&lt;img src=&quot;&#x2F;pictures&#x2F;musicapp&#x2F;hot_corner_shortcut.png&quot; alt=&quot;Screenshot of the (rather limited) Hot Corner Shortcut options&quot; &#x2F;&gt;&lt;&#x2F;p&gt;
+&lt;&#x2F;i&gt;
+&lt;p&gt;&lt;a href=&quot;https:&#x2F;&#x2F;support.apple.com&#x2F;guide&#x2F;notes&#x2F;welcome&#x2F;mac&quot;&gt;Notes.app&lt;&#x2F;a&gt; will launch from the &lt;code&gt;Quick Note&lt;&#x2F;code&gt; action so we can follow a familiar pattern and &lt;a href=&quot;https:&#x2F;&#x2F;interstellar.boats&#x2F;music.app&#x2F;#the-fix&quot;&gt;fix&lt;&#x2F;a&gt; that right up. Swapping to sending &lt;code&gt;Ctrl + n&lt;&#x2F;code&gt; could finalize this shortcut for a quick note, but &lt;i class=&quot;obsidian unset&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;obsidian.md&#x2F;&quot;&gt;Obsidian&lt;&#x2F;a&gt;&lt;&#x2F;i&gt; has &lt;i class=&quot;obsidian unset&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;help.obsidian.md&#x2F;Home&quot;&gt;options&lt;&#x2F;a&gt;&lt;&#x2F;i&gt; and &lt;i class=&quot;obsidian unset&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;obsidian.md&#x2F;plugins&quot;&gt;plugins&lt;&#x2F;a&gt;&lt;&#x2F;i&gt; for daily notes so this all will be left left as an exercise for the reader.&lt;sup class=&quot;footnote-reference&quot;&gt;&lt;a href=&quot;#3&quot;&gt;3&lt;&#x2F;a&gt;&lt;&#x2F;sup&gt;&lt;&#x2F;p&gt;
+&lt;hr &#x2F;&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;1&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;1&lt;&#x2F;sup&gt;
+&lt;p&gt;Yes! A footnote for the first paragraph! Generally I end up clicking &lt;i class=&quot;unset&quot; title=&quot;Also known as the Play&#x2F;Pause button, which shares a key with F8, so may require fn.&quot;&gt;&lt;code&gt;⏯&lt;&#x2F;code&gt;&lt;&#x2F;i&gt; under the assumption &lt;i class=&quot;spotify unset&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;open.spotify.com&#x2F;?&quot;&gt;Spotify&lt;&#x2F;a&gt;&lt;&#x2F;i&gt; is already open since in my it lives in desktop view to the right, so I am expecting playback to begin.&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;2&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;2&lt;&#x2F;sup&gt;
+&lt;p&gt;Options such as &lt;a href=&quot;https:&#x2F;&#x2F;karabiner-elements.pqrs.org&#x2F;&quot;&gt;Karabiner Elements&lt;&#x2F;a&gt; and &lt;a href=&quot;https:&#x2F;&#x2F;www.keyboardmaestro.com&#x2F;main&#x2F;&quot;&gt;Keyboard Maestro&lt;&#x2F;a&gt; also exist and may provide a solution to modifying this operation closer to the keyboard level, but have not been thoroughly explored, and are left as an exercise to the reader.&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+&lt;div class=&quot;footnote-definition&quot; id=&quot;3&quot;&gt;&lt;sup class=&quot;footnote-definition-label&quot;&gt;3&lt;&#x2F;sup&gt;
+&lt;p&gt;&lt;i class=&quot;spotify unset&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;open.spotify.com&#x2F;?&quot;&gt;Spotify&lt;&#x2F;a&gt;&lt;&#x2F;i&gt; and &lt;i class=&quot;obsidian unset&quot;&gt;&lt;a href=&quot;https:&#x2F;&#x2F;obsidian.md&#x2F;&quot;&gt;Obsidian&lt;&#x2F;a&gt;&lt;&#x2F;i&gt; are used in this write up, however the shortcut should accommodate swapping to whichever apps you like, as well the &lt;a href=&quot;https:&#x2F;&#x2F;developer.apple.com&#x2F;library&#x2F;archive&#x2F;documentation&#x2F;AppleScript&#x2F;Conceptual&#x2F;AppleScriptLangGuide&#x2F;introduction&#x2F;ASLR_intro.html&quot;&gt;AppleScript&lt;&#x2F;a&gt; swapping the keys pressed, &lt;a href=&quot;https:&#x2F;&#x2F;apple.stackexchange.com&#x2F;questions&#x2F;36943&#x2F;how-do-i-automate-a-key-press-in-applescript&quot;&gt;with more details here on that front&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;&#x2F;div&gt;
+</description>
+      </item>
+      <item>
+          <title>Maintenance Log</title>
+          <pubDate>Sun, 01 Oct 2023 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://interstellar.boats/2023/9/</link>
+          <guid>https://interstellar.boats/2023/9/</guid>
+          <description>&lt;h3 id=&quot;the-site-has-launched-rocket&quot;&gt;The site has launched! 🚀&lt;&#x2F;h3&gt;
+&lt;p&gt;Previously the site was not launched, this is the primary change you may have noticed this month. &lt;&#x2F;p&gt;
+&lt;p&gt;There have been a few tweaks since launch earlier this month.&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;Descriptions now show up correctly on the main posts page. The mobile display for these is still a work in progress.&lt;&#x2F;li&gt;
+&lt;li&gt;The colors have been adjusted to better fit contrast level guidelines, which were notably a bit low in the original light mode. &lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;h3 id=&quot;sunk-ships&quot;&gt;Sunk ships&lt;&#x2F;h3&gt;
+&lt;p&gt;In addition to the site&#x27;s changes, there has been work on a few posts, however nothing is  complete enough to be published. Of these, only one has been canned:&lt;&#x2F;p&gt;
+&lt;ul&gt;
+&lt;li&gt;An analysis of the mythical labs portrayed in Apple&#x27;s recent demos.&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Ranging from stationary bike and lab stool choice to a 1984 Macintosh in the background to determining which devices went with which developer boards, there was plenty of distraction from the products being presented. &lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;&#x2F;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;If anyone has gone through and discussed these facets of the presentation I would love to hear about it.&lt;&#x2F;p&gt;
+&lt;&#x2F;blockquote&gt;
+</description>
+      </item>
+      <item>
+          <title>Lift Off!</title>
+          <pubDate>Sat, 09 Sep 2023 00:00:00 +0000</pubDate>
+          <author>Unknown</author>
+          <link>https://interstellar.boats/hello/</link>
+          <guid>https://interstellar.boats/hello/</guid>
+          <description>&lt;h3 id=&quot;hello&quot;&gt;Hello!&lt;&#x2F;h3&gt;
+&lt;p&gt;Setting off on our maiden voyage, we dive deep into the vast speckled void.
+Goodbye to the unknown, hello to the
+&lt;a href=&quot;https:&#x2F;&#x2F;en.wikipedia.org&#x2F;wiki&#x2F;Observable_universe&quot;&gt;unobservable&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+&lt;p&gt;&lt;a href=&quot;&#x2F;rss.xml&quot;&gt;Modify your orbit to return&lt;&#x2F;a&gt;, or breach celestial escape velocity and
+venture forth, the universe is &lt;a href=&quot;&#x2F;random&quot;&gt;yours to explore&lt;&#x2F;a&gt;.&lt;&#x2F;p&gt;
+</description>
+      </item>
+    </channel>
+</rss>

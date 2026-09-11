@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en" id="root_html" class="WoB">
+  
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="me" href="https://mas.to/@ncb"></link>
+		<title>Interstellar Boats</title>
+    <meta name="description" content="Code, Dumb Jokes, Loose Space Themes, etc. " />
+    <link rel="shortcut icon"  href="https://interstellar.boats/favicon.ico" />
+    <link rel="alternate" type="application/atom+xml" title="RSS" href="https://interstellar.boats/atom.xml">
+
+    <!-- If you are concerned about the dark/lightmode switch, me too.... -->
+    <script src="/themes.js" loading="lazy"></script>
+    <script src="/moon.js" ></script>
+    <noscript><style>.sun{ display: none }</style></noscript>
+    <link rel="stylesheet" href="/style.css">
+
+    <meta property="og:site_name" content="Interstellar Boats">
+      <meta name="author" content="no" />
+      <meta property="og:title" content="Interstellar Boats">
+      <meta property="og:description" content="Code, Dumb Jokes, Loose Space Themes, etc. ">
+      <meta property="og:url" content="https://interstellar.boats">
+      <meta property="og:image" content="">
+
+      <meta property="og:type" content="article" />
+        <meta property="article:published_time" content="2025-09-30T00:00:00+00:00" />
+
+      
+      
+    
+ </head>
+  
+
+  <body>
+		<main id="main" role="main">
+  		<div class="sun_container">
+        <div id="moon" class="moon moon_increasing" onclick="cycleTheme()" title="Toggle between light and dark modes.">
+          <div id="earth" class="earth">
+            <div id="sun" class="sun"></div>
+          </div>
+        </div>
+    </div>
+      <div style="display:flex; flex-direction: row;">
+        <div>
+          <div class="logo" >
+      		    <a href="https://interstellar.boats" title="Home">
+            INTERSTELLAR.BOATS
+            </a>
+          </div>
+      
+		    <header role="banner">
+   		    <div style="margin-top:0;">
+              <div style="display:flex;flex-direction:column;">
+               
+                <nav class="navbar" role="navigation">
+                  
+                    <a href="https://interstellar.boats">home</a>
+                  
+                    <a href="https://interstellar.boats#archive">archive</a>
+                  
+                    <a href="https://interstellar.boats/projects">projects</a>
+                  
+                    <a href="https://interstellar.boats/about">about</a>
+                  
+                    <a href="https://interstellar.boats/rss.xml">rss</a>
+                  
+                </nav>
+                
+              </div>
+    	 	      <br />
+     		  </div>
+      	</header>
+   		
+    	
+
+<article>
+  
+  <h2>
+    <a href="https:&#x2F;&#x2F;interstellar.boats&#x2F;2025-09&#x2F;">
+    Do you remember?
+    </a>
+  </h2>
+  <p style="font-size:90%;">Posted on <time datetime="2025-09-30T00:00:00+00:00">September 30, 2025</time></p>
+  
+
+  <p>Ambivalence is over. Everything is falling apart.</p>
+<p>That's a bit dramatic, really just <a href="/s20">my phone's</a> power button fell out.
+Lukcily, a quick trip to eBay and my replacement was in the mail. A week later
+we were good as new again.</p>
+<hr />
+<p>Otherwise I've been updating my infra, and <a rel="noopener" target="_blank" href="https://syncthing.net/">Syncthing</a>
+has been the game changer I had hoped. Now everything is in a single
+<a rel="noopener" target="_blank" href="https://obsidian.md/">Obsidian</a> repo, synced synced between my phone, laptop,
+and desktop. Networking is handled through <a rel="noopener" target="_blank" href="https://tailscale.com/">TailScale</a>
+so it basically all "just" works.</p>
+<ul>
+<li>I can have a todo list in there!</li>
+<li>I can have every note I ever take in here!</li>
+<li>I can write ideas down for later on my phone, then actually follow up once at
+the computer cuz its the <em>same files</em></li>
+<li>I can run bash scripts against all these files in <em>almost real time</em></li>
+<li>I can have every page of this website here! <sup class="footnote-reference"><a href="#1">1</a></sup></li>
+</ul>
+<hr />
+<h2 id="tim-update">Tim Update!</h2>
+<p>There has been very little progress on
+<a rel="noopener" target="_blank" href="https://github.com/nxb9626/tim/tree/rust_gui">Tim: The Timekeeper</a></p>
+<ul>
+<li>A UI component system is effectively functional for displaying things</li>
+<li>Making things react to things is in progress but kinda functional
+<ul>
+<li>Debug menu is working, and components can register stuff to watch in it.</li>
+<li>Keypresses, works fairly well</li>
+<li>Mouse is the next step</li>
+<li>From there some more complex compnents will be possible,
+<ul>
+<li>like a <button>button</button></li>
+<li>or a text input: <input></input></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>In terms of project thoughts, this is entirely too low level to be worthwhile. I
+may try <a rel="noopener" target="_blank" href="https://tauri.app">Tauri</a> if I want something reasonably and quickly,
+but for now it being too level is a big part of what makes this specific project
+fun. Unfortunately it is also what makes it a bit more tiring to work on, so
+we'll see if pivoting is the move.</p>
+<h2 id="considering">Considering</h2>
+<p>Looking for suggestions on what to do with a bunch of GPU's. Feeling like
+that'll be a relevant resource that will be available relatively soon and might
+go wasted if not planned for at this point.</p>
+<ul>
+<li>A second gpu for the gaming pc, allowing for a dedicated GPU accelerated VM
+for gaming.</li>
+<li>Media encoding, since they probably won't be too out of date to be missing
+relevant codecs</li>
+<li>3d modeling and video editing maybe? as a render farm? Which could be useful
+for games. But with where I'm at with any of that I would barely need a single
+dedicated GPU for it.</li>
+</ul>
+<p>Odds are they'll be a decent upgrade relative to my current computer, but
+nothing too crazy given the games I play. But in terms of compute there's a lot
+of potential there that might go to waste, so I'd like to think of some good
+uses for them. Reach out if you have any suggestions:
+<a rel="noopener" target="_blank" href="https://mas.to/@ncb">@ncb@mas.to</a></p>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>Working on the website's pages are still a bit jank, may need to fork zola
+but that's a project for another day.</p>
+</div>
+<div class="footnote-definition" id="2"><sup class="footnote-definition-label">2</sup>
+<p>I've also kinda lost interest in building a time tracker so the project may
+pivot to something else entirely.</p>
+</div>
+
+</article>
+
+      <div id="footer" >
+        <div style="text-align: center;padding:100px">
+        ~
+        </div>
+      </div>
+      </div>
+   </main>
+    
+    
+  </body>
+</html>

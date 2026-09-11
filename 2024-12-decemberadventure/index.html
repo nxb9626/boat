@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en" id="root_html" class="WoB">
+  
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="me" href="https://mas.to/@ncb"></link>
+		<title>Interstellar Boats</title>
+    <meta name="description" content="Code, Dumb Jokes, Loose Space Themes, etc. " />
+    <link rel="shortcut icon"  href="https://interstellar.boats/favicon.ico" />
+    <link rel="alternate" type="application/atom+xml" title="RSS" href="https://interstellar.boats/atom.xml">
+
+    <!-- If you are concerned about the dark/lightmode switch, me too.... -->
+    <script src="/themes.js" loading="lazy"></script>
+    <script src="/moon.js" ></script>
+    <noscript><style>.sun{ display: none }</style></noscript>
+    <link rel="stylesheet" href="/style.css">
+
+    <meta property="og:site_name" content="Interstellar Boats">
+      <meta name="author" content="no" />
+      <meta property="og:title" content="Interstellar Boats">
+      <meta property="og:description" content="Code, Dumb Jokes, Loose Space Themes, etc. ">
+      <meta property="og:url" content="https://interstellar.boats">
+      <meta property="og:image" content="">
+
+      <meta property="og:type" content="article" />
+        <meta property="article:published_time" content="2024-12-31T00:00:00+00:00" />
+
+      
+      
+    
+ </head>
+  
+
+  <body>
+		<main id="main" role="main">
+  		<div class="sun_container">
+        <div id="moon" class="moon moon_increasing" onclick="cycleTheme()" title="Toggle between light and dark modes.">
+          <div id="earth" class="earth">
+            <div id="sun" class="sun"></div>
+          </div>
+        </div>
+    </div>
+      <div style="display:flex; flex-direction: row;">
+        <div>
+          <div class="logo" >
+      		    <a href="https://interstellar.boats" title="Home">
+            INTERSTELLAR.BOATS
+            </a>
+          </div>
+      
+		    <header role="banner">
+   		    <div style="margin-top:0;">
+              <div style="display:flex;flex-direction:column;">
+               
+                <nav class="navbar" role="navigation">
+                  
+                    <a href="https://interstellar.boats">home</a>
+                  
+                    <a href="https://interstellar.boats#archive">archive</a>
+                  
+                    <a href="https://interstellar.boats/projects">projects</a>
+                  
+                    <a href="https://interstellar.boats/about">about</a>
+                  
+                    <a href="https://interstellar.boats/rss.xml">rss</a>
+                  
+                </nav>
+                
+              </div>
+    	 	      <br />
+     		  </div>
+      	</header>
+   		
+    	
+
+<article>
+  
+  <h2>
+    <a href="https:&#x2F;&#x2F;interstellar.boats&#x2F;2024-12-decemberadventure&#x2F;">
+    December Adventure
+    </a>
+  </h2>
+  <p style="font-size:90%;">Posted on <time datetime="2024-12-31T00:00:00+00:00">December 31, 2024</time></p>
+  
+
+  <h2 id="day-25-31">Day 25-31</h2>
+<p>Took a break for the end of the year and didn't post or work on anything. I
+drummed a bunch, ran and rock climbed a bunch and had a great time with family
+and friends.</p>
+<p>This was a fun challenge, and I think with a more directed approach it would go
+even better. My plan with this was to go through a bunch of ideas that I had
+listed out and assigned to a day each, but most days I got distracted with
+something else that was more interesting. Frequently that was tinkering on this
+website, because it's sort of in progress and structured in a way that additions
+are straightforward.</p>
+<p>Having said that, this was a successful adventure. All over the place in trying
+things, but there were some great days and great learning approaches.</p>
+<ul>
+<li><a href="/2024-12-decemberadventure#day-5">Day 05</a>, I (kinda) made sand!
+(do lines with gravity count?)</li>
+<li><a href="/2024-12-decemberadventure#day-10">Day 10</a>, throwing a bunch of
+creation together all in one night</li>
+<li><a href="/2024-12-decemberadventure#day-15">Day 15</a>, fixing a button on
+a flannel</li>
+<li><a href="/2024-12-decemberadventure#day-22">Day 22</a>, changing the css
+for that flannel pic panel usinc css I didn't know existed before then</li>
+<li><a href="/2024-12-decemberadventure#day-24">Day 24</a>, rambling along as I
+try to solve an issue, effectively creating a blog post as I go</li>
+</ul>
+<p>Many other days were nothing, but so many were something. Next year rather than
+start a dozen projects, I'll plan to have a couple ready for a focused
+adventure, but I'm very happy with how this years adventure went.</p>
+<h2 id="day-24">Day 24</h2>
+<p>Tried to make the Zoom In focus mode thing in Zed more like a focus mode than it
+currently is ( ideally by centering the text view within it, rather than left
+algining as it currently does.)</p>
+<p>After much debugging I've made no real progress.</p>
+<p>In addition I tried to use a printer, at my parents request. HP does not
+maintain MacOS drivers for their LaserJet, so off to the virtual machines I
+went.</p>
+<p><a rel="noopener" target="_blank" href="https://github.com/lima-vm/lima">Lima</a>, which I already had installed did not
+work, it did not immediately pass through the usb devices and an
+<a rel="noopener" target="_blank" href="https://github.com/lima-vm/lima/pull/1317/files">draft PR</a> suggested it
+wouldn't work easily so I moved on.</p>
+<p>Off to UTM I went, with it's promising GUI and straightforward list of
+preconfigured vms. That preconfigured vm promised to complete it's download in
+3.5 hours, likely due to our internet here, so I went back and found a smaller
+one that would be done in 10 minutes.</p>
+<p>While waiting on that download, I reached out to a friend in search of
+alternative vm options. Unfortunately that options wasn't the move, but in the
+meantime we considered a usb over ssh to a remote pc I have running with a known
+working OS.</p>
+<p>This was deemed a relatively bad idea and so has been put on the back burner for
+future projects.</p>
+<p>By this point the pdf in question was also deemed a bad idea, as well as a
+decent portion of the crowd in eventual attendance had decided not to come over
+covid concerns. Needless to say the print was a no go... <em>but</em> the download had
+completed.</p>
+<p>UTM booted up a debian image no problem, although attaching a shared drive
+between the operating systems did not work immediately. The reboot was less than
+graceful. After a reboot the shared directory worked, but the printers were
+still failing to show up.</p>
+<blockquote>
+<p><a rel="noopener" target="_blank" href="https://github.com/utmapp/UTM/issues/2439">https://github.com/utmapp/UTM/issues/2439</a></p>
+</blockquote>
+<p>Suggested usb sharing should be an option, however I can't seem to find it.
+Directly boothing through qemu may be an option, however at this point guests
+that could arrive had started, so it was time to give up entirely.</p>
+<blockquote>
+<p>Additionally, writing down the process as it was occurring wasn't as much of a
+lift as I tend to think it to be. Not atht most of it is useful, but take this
+approach on a more practical problem and I could see it working out. Maybe
+tomorrow will be tagged posts, so I can support a <code>ramble</code> filter.</p>
+</blockquote>
+<h2 id="day-23">Day 23</h2>
+<p>Wrote a small, basic, lazy, innefficient parser for
+<a rel="noopener" target="_blank" href="https://wiki.nova-lang.net/index.php?title=Main_Page">Vera</a> in rust. Hoping
+tomorrow to make it run to some extent. Should probably run an existing
+implementation to understand how that's meant to work... but parsing it has
+helped understand how the language is supposed to work kinda.</p>
+<h2 id="day-22">Day 22</h2>
+<p>Travel day! And of course that means basicall nothing got done except one for
+the one flight.</p>
+<p><em>But</em> I did get the css working while waiting for my flight. <code>@media</code> queries
+are kinda wack. They don't work inline so had to move the them to a separate
+file. Also they can't use <code>var()</code>s in the query apparently? At least that wasn't
+working for me. Maybe that's related to the lack of inline usage.</p>
+<p>Below is the code, for your enjoyment:</p>
+<pre data-lang="css" class="language-css "><code class="language-css" data-lang="css">.image_panel &gt; p &gt; img {
+  width: 90%;
+  margin-left: 5%;
+  margin-right: 5%;
+  filter: saturate(10%);
+  border-radius: 3%;
+}
+
+.image_panel {
+  display: flex;
+  justify-content: space-around;
+}
+
+@media (min-width: 32rem * 1.5) {
+  .image_panel {
+    margin-left: -20%;
+    margin-right: -20%;
+  }
+}
+</code></pre>
+<h2 id="day-21">Day 21</h2>
+<p>Nothing. And by nothing I mean nothing coding wise, since spent a good day with
+friends, and solid chunk of that was working on a D&amp;D map for our campaign.</p>
+<h2 id="day-20">Day 20</h2>
+<p>Messed with a bit of css, incomplete change but committing anyways. See the
+image panel below, then see on a phone to see the problem.</p>
+<h2 id="day-19">Day 19</h2>
+<p>Tried messing with some music stuff, didn't make anything worth sharing, but did
+put chords in midi and hear them back.</p>
+<h2 id="day-18">Day 18</h2>
+<p>I learned how to rename a directory via the command line in linux:</p>
+<pre><code>mv old_name new_name
+</code></pre>
+<p>There is no way to actually do it. I've definitely googled this before but now
+it's also here.</p>
+<p>The idea didn't even pan out. Giving up on it for the moment, but will revisit.</p>
+<p>Tried adding raw md content to to the output of zola. Made some progress on
+understanding that maze, but not much in terms of adding on to it.</p>
+<h2 id="day-17">Day 17</h2>
+<p>Also nothing noteworthy, got distracted by a picture of a library.</p>
+<h2 id="day-16">Day 16</h2>
+<p>Didn't do anything technical. This is (partly) because I found a weird rust
+thing. More at 11 if I can reproduce it (so far, haven't).</p>
+<h2 id="day-15">Day 15</h2>
+<p>I fixed a button on the left sleeve of one of my flannels.</p>
+<div class="image_panel">
+<p><img src="/2024/12/15/left_small.png" alt="Updated Buttons" /></p>
+<p><img src="/2024/12/15/middle_small.png" alt="Updated Buttons" /></p>
+<p><img src="/2024/12/15/right_small.png" alt="Updated Buttons" /></p>
+</div>
+<p>I've also been messing around with desaturating my devices. It feels a bit
+surreal to hold and look at a phone that is black &amp; white. It also makes looking
+up from the phone feel like a bigger relief. Maybe that's my eyes straining and
+I shouldn't be doing that, or maybe it's making "real life" much brighter and
+colorful by comparison.</p>
+<p>Applying that to the images here, it keeps the page feeling a bit lower energy
+which I think is the vibe I want.</p>
+<h2 id="day-14">Day 14</h2>
+<style>
+  img {
+    width:100%;
+    margin-top:1rem;
+    margin-bottom:1rem;
+    filter: saturate(10%);
+  }
+</style>
+<p>Small amount of Minecraft planning for a build there. Did it in
+<a rel="noopener" target="_blank" href="https://www.tldraw.com/">tldraw</a> (a much more competent tool than the side of
+my site). You can see some of the in game outlining as well, this is part of
+taking a step back before diving full on into a project.</p>
+<div class="image_panel">
+<p><img src="/2024/12/14/sketch.png" alt="The minecraft build. This is just the sketch on top of an initial outline for an outpost to a main major build. If you ask me where I see myself being in 5 years, it&#39;s there." /></p>
+</div>
+<p>Is this programming? Aren't we all programming? What is programming again?</p>
+<p>The first result for me on searching programming was Computer Programming, which
+I guess is what we're focused on with this. Wikipedia at the time of writing (I
+know, reliable source, and who relies on definitions ever anyways? It's an
+overused way to start anything but stay with me) starts out that article with</p>
+<blockquote>
+<p><a rel="noopener" target="_blank" href="https://en.wikipedia.org/wiki/Computer_programming">Computer programming is the composition of sequences of instructions, called programs, that computers can follow to perform tasks.</a></p>
+</blockquote>
+<p>By drawing in tldraw, I instructed the computer what to display, and it
+continued to do that. Those are instructions in a way, so that is programming as
+far as I can tell. Maybe it doesn't "do" anything, but it does, it tells the
+computer what to display.</p>
+<p>In addition, if you look at how tldraw is stored, when downloaded, you'll see
+it's a json blob. Which is very convenient for scanning quickly once formatted.</p>
+<p>You can see a list of every line that was drawn, where it was drawn, and all of
+the segments that make it up. This looks a lot to me like a list of
+instructions, that the computer executes to do things.</p>
+<p>I doubt anyone reading this will really object, but I do think it's interesting
+that in this case the program is written in the tldraw editor, and executed in
+the tldraw editor. The code itself is still the internal json. This layer is
+small and not an issue, but it is on top of many other layers.</p>
+<p>I suppose an operating system that was entirely tldraw would be a bit difficult
+to make work, so cutting out all the layers might not make the most sense, but I
+wonder how many layers we can get rid of? Is there a low level canvasing tool
+that's as easy to use?</p>
+<p>PS. Left Minecraft open while doing writing ramble. Would recommend for unending
+background music if you have resources to spare. Based on an unscientific glance
+to activity monitor &amp; htop it's title screen had comparable ram usage to an idle
+Spotify, but fewer extra service running taking up ram.</p>
+<h2 id="day-13">Day 13</h2>
+<p>Basically nothing today, D&amp;D immediately after work which lasted until midnight.
+I'm calling that a good excuse to have nothing to show, and in a way I
+contributed a small part to a story with friends, which is making <em>something</em>.</p>
+<h2 id="day-12">Day 12</h2>
+<p>Started back up on a small little song tracker for spotify. It currently has an
+issue around refreshing tokens which is a pain, but I'll keep tinkering on it.</p>
+<p>I think that with a small api endpoint will be the target for my larger scale
+proxy plans:</p>
+<pre><code>                  +--------------tailnet----------+
+                  |                               |
+            +----linode vm----+                   |
+boats ------+----&gt; proxy      +---&gt; Local PC      |
+            +-----------------+                   |
+                  |                               |
+                  +-------------------------------+
+</code></pre>
+<p>This is all tentative. After typing that all up I've realized it may be simpler
+to use Val Town or similar, but this would allow more granular forwarding to my
+local setup as well. Tradeoffs still left to weigh.</p>
+<p>Also fixed a small issue around styling <code>code</code> elements, the inline code styling
+was conflicting with the code block styling (uses the same tag).</p>
+<h2 id="day-11">Day 11</h2>
+<p>Yesterday's work rolled over to today, so I'm counting it. It cost me sleep, and
+I really enjoyed working on it. Tomorrow something will be properly tinkered
+with.</p>
+<h2 id="day-10">Day 10</h2>
+<p>Spent the day watching the fog pass through, living with not just my head, but
+my whole being in the clouds.</p>
+<script>
+const play = () => {
+  document.GRAVITY = true;
+  document.PRESSED_START += 1;
+  console.log('play')
+}
+
+</script>
+<button onClick="play()">
+Play
+</button>
+<h2 id="day-9">Day 9</h2>
+<p>These days all kinda blur into one, and by that I of course mean that I did very
+little this weekend, so am <del>making up for it</del> doing anything at all today.</p>
+<p>Drafted up some thoughts, on Cat's Cradle. I think there's more I could do with
+it, so waiting to post until I can think a bit more on it.</p>
+<p>So I guess today I wrote some markdown code.</p>
+<h2 id="day-8">Day 8</h2>
+<p>Finished Cat's Cradle but no time for anything else. (Had important board games
+to lose at)</p>
+<h2 id="day-7">Day 7</h2>
+<p>Read a bit more of Cat's Cradle, otherwise busy trying bad beer and good
+seltzer.</p>
+<h2 id="day-6">Day 6</h2>
+<p>Today I did two (2) noteworthy things to my adventure.</p>
+<ol>
+<li>
+<p>I read Cat's Cradle by Kurt Vonnegut for an hour. I'll finish it soon and
+have more thoughts, but it's been good so far.</p>
+</li>
+<li>
+<p>I fried ground turkey in a carbon steel pan for the first time.</p>
+</li>
+</ol>
+<p>Firstly, it heated up way faster than expected, and to higher temperatures than
+my previous pan (a too big, never used T-Fal, as the interim for a reasonably
+sized over used T-Fal). I love that efficiency of this new pan but was not
+prepared for it. Butter, glue-sticked on was cooking fast. Throwing garlic
+powder for seasoning put it over the edge, and the contents were <em>burnt
+instantly</em>.</p>
+<p>Luckily like it's quick heating, it also cooled quickly. Scraped off the garlic
+remains, Set it to the side, a few minutes later it had dropped in temperature
+and was back on the now lowered burner.</p>
+<p>At this now reasonable temperature the butter bubbled, the garlic sizzled, and
+the pepper permeated. It was ready. The ground turkey was added without issue,
+and fried fine.</p>
+<p>The pasta, broccoli, and sauces were done as usual (lazily, but effectively),
+the dish was piled together, cheesed up and tossed in the toaster to top it off.
+Ate it up too fast, forgot to take a picture to share. I'll consider do a recipe
+write up in the future if there's interest.</p>
+<p>The cleaning was odd but alright. No soap, like a cast iron, but some stuff was
+stuck on through scraping it I found the current seasoning of this pan seems a
+bit... fragile. The rough side of my sponge (new sponge no soap (although
+apparently that's not actually the end of the world)) was enough to leave some
+marks of apparent abrasion on the pan.</p>
+<p>After getting the gunk off I dried it, heated it up and attempted at adding some
+vegetable oil layers to season it. I have no idea if this worked. I have a
+feeling it wasn't hot enough.</p>
+<p>We'll see tomorrow after eggs for breakfast.</p>
+<h2 id="day-5">Day 5</h2>
+<p>I added gravity to the drawing bits. Take a note to off to either side, enable
+gravity, and watch it all fall down.</p>
+<script>
+const enableGravity = () => {
+  document.GRAVITY=true;
+  console.log("gravity now")
+}
+const disableGravity = () => {
+  document.GRAVITY=false;
+  console.log("gravity no more")
+}
+</script>
+<button onClick="enableGravity()">
+Enable Gravity
+</button>
+<div style="height:20px"></div>
+<button onClick="disableGravity()">
+Disable Gravity
+</button>
+<p>In addition you'll see it piles up at the bottom! It's sand! Sorta!</p>
+<p>This is jankily implemented on top of the drawing. It's applying gravity to each
+of the points in each line, and then continuing to draw the lines, which leads
+to some oddities in the piling up. I'll probably take some steps to improve it
+over the month.</p>
+<h2 id="day-4">Day 4</h2>
+<style>
+code {
+  font-size:80%;
+  overflow-x: scroll;
+}
+</style>
+<p>And now for something entirely different. I've listened in on some of the
+<a rel="noopener" target="_blank" href="https://github.com/munshkr/flok">flok</a> setup at
+<a rel="noopener" target="_blank" href="https://todepond.cool/flok">https://todepond.cool/flok</a>, but haven't gotten too
+involved. This is mostly down to not having any idea what anything is doing when
+looking at it, and not wanting to break things. But this is nothing that
+couldn't be fixed with a bit of practice, so I copied some starter code from
+there to <a rel="noopener" target="_blank" href="https://strudel.cc/">strudel.cc</a> and went to tinkering.</p>
+<pre><code>window.foo=&quot;&lt;A3:minor C4:major [D3:lydian D4:mixolydian]&gt;&#x2F;3&quot;
+
+$: n(&quot;1 5 9 11&quot;)
+  .s(&quot;sawtooth&quot;)
+  .lpf(300)
+  .scale(foo)
+  .room(3)
+
+$: n(&quot;3 [1 3 5 7]&quot;)
+  .iter(4)
+  .s(&quot;piano&quot;)
+  .delay(2)
+  .lpf(300)
+  .scale(foo)
+  .room(3)
+
+$: n(&quot;&lt;[1 3 5 9] 3 [1 3 5 7] 3&gt;*2&quot;)
+  .s(&quot;square&quot;)
+  .lpf(300)
+  .hpf(900)
+  .scale(foo)
+  .room(3).decay(&quot;&lt;.1 .2 .3 .4&gt;&quot;).sustain(1)
+</code></pre>
+<p>This is the last state of it. It's not "good". But it, and more importantly
+strudel concept is interesting, especially when extended to the
+<a rel="noopener" target="_blank" href="https://github.com/munshkr/flok">flok</a> system. Sounds better while being
+tinkered with, so hopefully I'll be around as more of those collab sessions
+occur.</p>
+<h2 id="day-3">Day 3</h2>
+<ul>
+<li>Fixed the rss feed</li>
+<li>Stylized the button below</li>
+<li>Set the ips to be displayed in the top right</li>
+<li>Split the tracking rate from the frame rate, probably to the detrimetn of the
+browser experience. Did find out that frame rate was running the loop around
+15 times faster.</li>
+<li>added some easter eggs to the site that I'll for sure forget and be confused
+by some day.</li>
+<li>Ran of of time to make a nicer write up</li>
+</ul>
+<h2 id="day-2">Day 2</h2>
+<style>
+button {
+  width:100%;
+  font-size:120%;
+  text-align: center;
+  border: 2px solid var(--text-color);
+  background-color:var(--background-color);
+  color:var(--text-color);
+  padding-top:5px;
+  padding-bottom:5px;
+}
+button:hover{
+  cursor: pointer;
+  background-color:var(--text-color);
+  color:var(--background-color);
+}
+</style>
+<script>
+const setDebugging = () =>{
+  document.DEBUGGING=true
+  document.init_ips();
+  console.log("enabled debugging")
+}
+</script>
+<p>Super simple ips rate (iterations per second), currently being logged to the
+console. I've added <code>draw</code> to this page so it can be viewed here, so click to
+the side to draw whatever you want. It won't persist so screenshot if it's
+something good.</p>
+<p>But to see the debugging, click below and open the console.</p>
+<button onClick="setDebugging()">
+Enable Debugging
+</button>
+<p>Unfortunately in doing this I was reminded that the update rate is tied directly
+to the frame request rate. It also at this point, time to put away the laptops
+on the flight, so my time was up. Eventually this will be useful, but for now it
+is merely noteworthy.</p>
+<h2 id="day-1">Day 1</h2>
+<h3 id="the-technical">The Technical</h3>
+<p>Setup this post, posted the monthly <code>now()</code>.</p>
+<h3 id="the-technically-counts">The Technically Counts</h3>
+<p>Drummed for an hour. I'm bad... but not getting worse. What's more adventurous
+than loud noises and trying to do things in a consistently pleasant way. Could
+also describe some of my programming that way.</p>
+<p>Note:</p>
+<blockquote>
+<p>Yes I'm counting drumming as part of this. It will probably not be the
+weirdest thing I count, but it won't <em>all</em> be non programming. Goal here is to
+do things.</p>
+</blockquote>
+<style>
+.draw {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+}
+
+</style>
+<p><canvas id="draw" class="draw"></canvas></p>
+<div id="draw_stats"></div>
+<script src="/canvas/draw.js" style="white-space: pre-wrap;"></script>
+
+</article>
+
+      <div id="footer" >
+        <div style="text-align: center;padding:100px">
+        ~
+        </div>
+      </div>
+      </div>
+   </main>
+    
+    
+  </body>
+</html>

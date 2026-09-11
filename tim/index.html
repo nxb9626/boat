@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en" id="root_html" class="WoB">
+  
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="me" href="https://mas.to/@ncb"></link>
+		<title>Interstellar Boats</title>
+    <meta name="description" content="Code, Dumb Jokes, Loose Space Themes, etc. " />
+    <link rel="shortcut icon"  href="https://interstellar.boats/favicon.ico" />
+    <link rel="alternate" type="application/atom+xml" title="RSS" href="https://interstellar.boats/atom.xml">
+
+    <!-- If you are concerned about the dark/lightmode switch, me too.... -->
+    <script src="/themes.js" loading="lazy"></script>
+    <script src="/moon.js" ></script>
+    <noscript><style>.sun{ display: none }</style></noscript>
+    <link rel="stylesheet" href="/style.css">
+
+    <meta property="og:site_name" content="Interstellar Boats">
+      <meta name="author" content="no" />
+      <meta property="og:title" content="Interstellar Boats">
+      <meta property="og:description" content="Code, Dumb Jokes, Loose Space Themes, etc. ">
+      <meta property="og:url" content="https://interstellar.boats">
+      <meta property="og:image" content="">
+
+      
+
+      
+      
+    
+ </head>
+  
+
+  <body>
+		<main id="main" role="main">
+  		<div class="sun_container">
+        <div id="moon" class="moon moon_increasing" onclick="cycleTheme()" title="Toggle between light and dark modes.">
+          <div id="earth" class="earth">
+            <div id="sun" class="sun"></div>
+          </div>
+        </div>
+    </div>
+      <div style="display:flex; flex-direction: row;">
+        <div>
+          <div class="logo" >
+      		    <a href="https://interstellar.boats" title="Home">
+            INTERSTELLAR.BOATS
+            </a>
+          </div>
+      
+		    <header role="banner">
+   		    <div style="margin-top:0;">
+              <div style="display:flex;flex-direction:column;">
+               
+                <nav class="navbar" role="navigation">
+                  
+                    <a href="https://interstellar.boats">home</a>
+                  
+                    <a href="https://interstellar.boats#archive">archive</a>
+                  
+                    <a href="https://interstellar.boats/projects">projects</a>
+                  
+                    <a href="https://interstellar.boats/about">about</a>
+                  
+                    <a href="https://interstellar.boats/rss.xml">rss</a>
+                  
+                </nav>
+                
+              </div>
+    	 	      <br />
+     		  </div>
+      	</header>
+   		
+    	
+
+<article>
+  
+
+  <h2 id="description">Description</h2>
+<p>This is a time tracker written entirely in Bash and Sqlite, with all activity
+progress stored in single a CSV file.</p>
+<p>No longer in active development, some work on a SDL backed GUI in Rust was made
+and may be picked up again. For now the below setup works well enough for my
+needs.</p>
+<h2 id="setup">Setup</h2>
+<p>Setup is a bit too simple, and could be made easier. These aliases are loaded to
+whichever client machine is using the system. <code>marble</code> is a server configured to
+have <a rel="noopener" target="_blank" href="https://github.com/nxb9626/tim">tim source files</a> in the Projects
+directory, which keeps all time tracking centralized.</p>
+<pre><code>alias start=&quot;ssh marble &#x27;cd ~&#x2F;Projects&#x2F;tim &amp;&amp; .&#x2F;tog.sh start $1&#x27;&quot;
+alias stop=&quot;ssh marble &#x27;cd ~&#x2F;Projects&#x2F;tim &amp;&amp; .&#x2F;tog.sh stop $1&#x27;&quot;
+alias view=&quot;ssh marble &#x27;cd ~&#x2F;Projects&#x2F;tim &amp;&amp; .&#x2F;view.sh&#x27;&quot;
+alias pivot=&quot;ssh marble &#x27;cd ~&#x2F;Projects&#x2F;tim &amp;&amp; .&#x2F;pivot.sh&#x27;&quot;
+</code></pre>
+<p>There is no Tim specific instance or daemon or server software that needs to be
+running otherwise, so this can all be run locally if desired. The above is
+entirely for convenience in my homelab.</p>
+<h2 id="features">Features</h2>
+<h3 id="supported-commands">Supported commands</h3>
+<p><code>view</code></p>
+<ul>
+<li>Displays currently running times, as well as activities that have been worked
+on that day.</li>
+</ul>
+<p><code>start &lt;activity&gt;</code></p>
+<ul>
+<li>Begins tracking of the provided activity</li>
+</ul>
+<p><code>stop &lt;activity|all&gt;</code></p>
+<ul>
+<li>stops the provided activity. <code>all</code> can be used to stop all currently running
+activities. Under the hood this is how pivot works.</li>
+</ul>
+<p><code>pivot &lt;activity&gt;</code></p>
+<ul>
+<li>Toggles from all currently running activity to another activity</li>
+</ul>
+<h3 id="csv-file">CSV file</h3>
+<p>The CSV file is formatted as below.</p>
+<p><code>time,action,activity</code></p>
+<p>With each being:</p>
+<p><code>time</code>: The time is in ISO 8601 format, but it is the local time of the machine
+running the scripts. Take care when tracking across time zones.</p>
+<p><code>action</code>: "start" or "stop"</p>
+<p><code>actvity</code>: Name of the activity being started or stopped. "all" being read as a
+keyword to stop all running activities.</p>
+<pre><code>2026-05-11T11:32:32-04:00,start,tim
+2026-05-11T11:32:35-04:00,stop,tim
+2026-05-11T11:49:06-04:00,start,dishes
+2026-05-11T11:49:08-04:00,start,tim
+2026-05-11T11:49:15-04:00,stop,dishes
+2026-05-11T11:49:19-04:00,start,dishes
+2026-05-11T11:49:24-04:00,stop,all
+</code></pre>
+<p>The <code>view</code> command displays this above snippet as below:</p>
+<pre><code>Today&#x27;s Activity Times:
+
+tim        0000-00-00 00:00:08.000
+dishes     0000-00-00 00:00:09.000
+
+No Activities Running.
+</code></pre>
+<h2 id="source-code"><a rel="noopener" target="_blank" href="https://github.com/nxb9626/tim">Source Code</a></h2>
+
+</article>
+
+      <div id="footer" >
+        <div style="text-align: center;padding:100px">
+        ~
+        </div>
+      </div>
+      </div>
+   </main>
+    
+    
+  </body>
+</html>

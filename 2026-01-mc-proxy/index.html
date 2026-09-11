@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en" id="root_html" class="WoB">
+  
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="me" href="https://mas.to/@ncb"></link>
+		<title>Interstellar Boats</title>
+    <meta name="description" content="Code, Dumb Jokes, Loose Space Themes, etc. " />
+    <link rel="shortcut icon"  href="https://interstellar.boats/favicon.ico" />
+    <link rel="alternate" type="application/atom+xml" title="RSS" href="https://interstellar.boats/atom.xml">
+
+    <!-- If you are concerned about the dark/lightmode switch, me too.... -->
+    <script src="/themes.js" loading="lazy"></script>
+    <script src="/moon.js" ></script>
+    <noscript><style>.sun{ display: none }</style></noscript>
+    <link rel="stylesheet" href="/style.css">
+
+    <meta property="og:site_name" content="Interstellar Boats">
+      <meta name="author" content="no" />
+      <meta property="og:title" content="Interstellar Boats">
+      <meta property="og:description" content="Code, Dumb Jokes, Loose Space Themes, etc. ">
+      <meta property="og:url" content="https://interstellar.boats">
+      <meta property="og:image" content="">
+
+      <meta property="og:type" content="article" />
+        <meta property="article:published_time" content="2026-01-18T00:00:00+00:00" />
+
+      
+      
+    
+ </head>
+  
+
+  <body>
+		<main id="main" role="main">
+  		<div class="sun_container">
+        <div id="moon" class="moon moon_increasing" onclick="cycleTheme()" title="Toggle between light and dark modes.">
+          <div id="earth" class="earth">
+            <div id="sun" class="sun"></div>
+          </div>
+        </div>
+    </div>
+      <div style="display:flex; flex-direction: row;">
+        <div>
+          <div class="logo" >
+      		    <a href="https://interstellar.boats" title="Home">
+            INTERSTELLAR.BOATS
+            </a>
+          </div>
+      
+		    <header role="banner">
+   		    <div style="margin-top:0;">
+              <div style="display:flex;flex-direction:column;">
+               
+                <nav class="navbar" role="navigation">
+                  
+                    <a href="https://interstellar.boats">home</a>
+                  
+                    <a href="https://interstellar.boats#archive">archive</a>
+                  
+                    <a href="https://interstellar.boats/projects">projects</a>
+                  
+                    <a href="https://interstellar.boats/about">about</a>
+                  
+                    <a href="https://interstellar.boats/rss.xml">rss</a>
+                  
+                </nav>
+                
+              </div>
+    	 	      <br />
+     		  </div>
+      	</header>
+   		
+    	
+
+<article>
+  
+  <h2>
+    <a href="https:&#x2F;&#x2F;interstellar.boats&#x2F;2026-01-mc-proxy&#x2F;">
+    Tailscale Server Proxy
+    </a>
+  </h2>
+  <p style="font-size:90%;">Posted on <time datetime="2026-01-18T00:00:00+00:00">January 18, 2026</time></p>
+  
+
+  <p>I host almost everything locally, but I needed a good way for friends to reach
+in to our <a rel="noopener" target="_blank" href="https://fabricmc.net/use/server/">Minecraft server</a>. This is a
+<a rel="noopener" target="_blank" href="https://en.wiktionary.org/wiki/jank#Adjective">jank</a> but so far effective
+solution.</p>
+<h2 id="the-plan">The plan</h2>
+<p>Friends will be connecting to my server through a domain name directing to a vm
+hosted by Digital Ocean<sup class="footnote-reference"><a href="#1">1</a></sup>, forwarding network traffic on port 25565 using
+<code>socat</code><sup class="footnote-reference"><a href="#2">2</a></sup> to my personal server through Tailscale, as diagrammed below.</p>
+<div class="image_panel">
+<p><img src="/2026/01/tailnet_diagram.png" alt="Diagram of the network flow, created in TLDraw" /></p>
+</div>
+<p>This sounds like a lot, but in reality it has 3 steps for me, and at most one or
+two more for you.</p>
+<p>The steps:</p>
+<ol>
+<li>Setup VM in Digital Ocean</li>
+<li>Setup Tailscale on that VM</li>
+<li>Run <a rel="noopener" target="_blank" href="https://man.archlinux.org/man/socat1.1.en"><code>socat</code></a> command in tmux on
+that VM, detach, and call it a day</li>
+<li>Optional: Connect Domain Name</li>
+</ol>
+<p>You'll notice that there's no setting up auto start scripts, configuring
+systemd, installing docker, or anything like that. That is because this is the <a rel="noopener" target="_blank" href="https://www.digitalocean.com/"><em>jank</em></a> solution that I can spin up again in 5 minutes if it goes down. The uptime agreement for this service is "fix it if my friends bug me about it being down before I notice it being down" so we'll be aiming for roughly <a rel="noopener" target="_blank" href="https://en.wikipedia.org/wiki/High_availability#Percentage_calculation">one 9 of uptime</a>.</p>
+<h2 id="setup-vm-in-digital-ocean">Setup VM in <del>Digital Ocean</del></h2>
+<p><strong>2026-09-09 Small Update</strong>: <a rel="noopener" target="_blank" href="https://omarchy.org/news/2026/09/digitalocean-joins-as-founding-corporate-patron/">I'm moving to a different provider. Will be updating this guide soon as I complete the switch. For now the Digital Ocean VM has been taken offline.</a>.</p>
+<p>Note: this could be in any cloud service provider. At the time of writing Digital Ocean had 4$ / month VM with 1 shared CPU and 500gb of outbound network traffic included. This would be enough speed and data to forward <em>all</em> of my network traffic in the month through while staying within that 4$ budget.</p>
+<ol>
+<li>
+<p>Navigate to this <a rel="noopener" target="_blank" href="https://cloud.digitalocean.com/droplets/new?i=c9cecf&amp;region=nyc3&amp;size=s-1vcpu-512mb-10gb&amp;distro=debian&amp;distroImage=debian-13-x64">Create Droplet Page</a>
+which should be pre-populated with:</p>
+<ul>
+<li>New York (This VM options is not available in all regions, but worth
+checking for a closer regions if this is far from you)</li>
+<li>Debian 13</li>
+<li>Droplet Type: Basic
+<ul>
+<li>1 vCPU</li>
+<li>512 MB ram</li>
+<li>Regular SSD -4$/month VM</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Create or add an ssh key, and select it as the Authentication Method</p>
+</li>
+<li>
+<p>I recommend giving it a custom Hostname, mine is called McProxy. This name is not important for later configuration, but makes finding it on the dashboard easier.</p>
+</li>
+<li>
+<p>Click <strong>Create Droplet</strong></p>
+</li>
+</ol>
+<h2 id="setup-tailscale-on-that-vm">Setup Tailscale on that VM</h2>
+<ol start="0">
+<li>Connect to the VM through the web <code>ssh</code> console</li>
+<li>Install
+<a rel="noopener" target="_blank" href="https://tailscale.com/download/linux">tailscale, following their instructions</a>
+<ul>
+<li>If not setup with Tailscale on your server already, install there as well</li>
+</ul>
+</li>
+</ol>
+<p>On <a rel="noopener" target="_blank" href="https://login.tailscale.com/admin/machines">Tailscale dashboard</a></p>
+<ol start="3">
+<li>Set the hostname of the machine to <code>monarch</code> (or your preferred name) for
+ease of identification, and because this is a
+<a rel="noopener" target="_blank" href="https://cloudscaling.com/blog/cloud-computing/the-history-of-pets-vs-cattle/">pet, not cattle</a>.
+This is what the VM can be reached at from anything hooked up with Tailscale</li>
+<li>I also recommend setting a hostname for your server if you haven't. I call
+mine <code>marble</code></li>
+</ol>
+<h2 id="run-socat">Run <a rel="noopener" target="_blank" href="https://man.archlinux.org/man/socat1.1.en">socat</a></h2>
+<p>Back On <code>monarch</code> (Our VM):</p>
+<ol start="4">
+<li>
+<p><code>apt install tmux</code>, to let us disconnect without killing the command<sup class="footnote-reference"><a href="#3">3</a></sup></p>
+</li>
+<li>
+<p>Run <code>tmux</code></p>
+</li>
+<li>
+<p>Forwarding with <code>socat</code></p>
+<p><code>socat TCP4-LISTEN:25565,fork TCP4:marble:25565</code></p>
+<p>Note: the <code>marble</code> in this command must be swapped with the Tailscale
+hostname of your server</p>
+</li>
+<li>
+<p>Disconnect from the session with the key combo: <code>Ctrl-B d</code></p>
+</li>
+</ol>
+<p>From here we server configuration should be all set. You can confirm this by
+connecting to the VM's IP from you Minecraft client.</p>
+<h2 id="optional-connect-domain-name">Optional: Connect Domain Name</h2>
+<p>In my case this is an "A Record" on a subdomain configured through Namecheap's
+Dashboard, but your steps may differ slightly here.</p>
+<ol>
+<li><a rel="noopener" target="_blank" href="https://ap.www.namecheap.com/dashboard">Namecheap Dashboard</a></li>
+<li><code>Manage</code> on 'domain.name'</li>
+<li><code>Advanced DNS</code> tab</li>
+<li>Add (or Update existing) A Record pointing to the IP of the VM we just setup</li>
+</ol>
+<h2 id="the-why">The why</h2>
+<p>I am not running the Minecraft server directly on the VM since that VM is less
+powerful than my local server.</p>
+<p>I can't port forward due to my ISP. Well. I can, but they would want to charge
+extra (more than this VM costs) for the privilege. I can't change from this ISP
+in my current apartment, so this workaround is necessary.</p>
+<hr />
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>Using <a rel="noopener" target="_blank" href="https://www.digitalocean.com/">Digital Ocean</a> only because it was the
+first one who would take my credit card. Tried a couple other cheap options
+but couldn't get past perplexing payment processing problems.</p>
+</div>
+<div class="footnote-definition" id="2"><sup class="footnote-definition-label">2</sup>
+<p>I'm sure <a rel="noopener" target="_blank" href="https://nginx.org/en/">nginx</a> could do this with a minimal config,
+or some other similar reverse proxy. I thought
+<a rel="noopener" target="_blank" href="https://caddyserver.com/">caddy</a> would be able to, and in theory it
+<a rel="noopener" target="_blank" href="https://github.com/mholt/caddy-l4">still could</a> but will need a bit more
+finagling. For now this works.</p>
+</div>
+<div class="footnote-definition" id="3"><sup class="footnote-definition-label">3</sup>
+<p><a rel="noopener" target="_blank" href="https://www.gnu.org/software/screen/manual/screen.html">Screen</a> and a
+variety of other tools can do this as well, but I know tmux best so I
+install tmux here. Maybe next time I set this up I'll simplify to screen
+instructions and remove the tmux install step, or even better set it to run
+through a <a rel="noopener" target="_blank" href="https://systemd.io/">systemd</a> (or similar) service.</p>
+</div>
+
+</article>
+
+      <div id="footer" >
+        <div style="text-align: center;padding:100px">
+        ~
+        </div>
+      </div>
+      </div>
+   </main>
+    
+    
+  </body>
+</html>

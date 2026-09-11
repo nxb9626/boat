@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" id="root_html" class="WoB">
+  
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="me" href="https://mas.to/@ncb"></link>
+		<title>Interstellar Boats</title>
+    <meta name="description" content="Code, Dumb Jokes, Loose Space Themes, etc. " />
+    <link rel="shortcut icon"  href="https://interstellar.boats/favicon.ico" />
+    <link rel="alternate" type="application/atom+xml" title="RSS" href="https://interstellar.boats/atom.xml">
+
+    <!-- If you are concerned about the dark/lightmode switch, me too.... -->
+    <script src="/themes.js" loading="lazy"></script>
+    <script src="/moon.js" ></script>
+    <noscript><style>.sun{ display: none }</style></noscript>
+    <link rel="stylesheet" href="/style.css">
+
+    <meta property="og:site_name" content="Interstellar Boats">
+      <meta name="author" content="no" />
+      <meta property="og:title" content="Interstellar Boats">
+      <meta property="og:description" content="Code, Dumb Jokes, Loose Space Themes, etc. ">
+      <meta property="og:url" content="https://interstellar.boats">
+      <meta property="og:image" content="">
+
+      <meta property="og:type" content="article" />
+        <meta property="article:published_time" content="2026-06-10T00:00:00+00:00" />
+
+      
+      
+    
+ </head>
+  
+
+  <body>
+		<main id="main" role="main">
+  		<div class="sun_container">
+        <div id="moon" class="moon moon_increasing" onclick="cycleTheme()" title="Toggle between light and dark modes.">
+          <div id="earth" class="earth">
+            <div id="sun" class="sun"></div>
+          </div>
+        </div>
+    </div>
+      <div style="display:flex; flex-direction: row;">
+        <div>
+          <div class="logo" >
+      		    <a href="https://interstellar.boats" title="Home">
+            INTERSTELLAR.BOATS
+            </a>
+          </div>
+      
+		    <header role="banner">
+   		    <div style="margin-top:0;">
+              <div style="display:flex;flex-direction:column;">
+               
+                <nav class="navbar" role="navigation">
+                  
+                    <a href="https://interstellar.boats">home</a>
+                  
+                    <a href="https://interstellar.boats#archive">archive</a>
+                  
+                    <a href="https://interstellar.boats/projects">projects</a>
+                  
+                    <a href="https://interstellar.boats/about">about</a>
+                  
+                    <a href="https://interstellar.boats/rss.xml">rss</a>
+                  
+                </nav>
+                
+              </div>
+    	 	      <br />
+     		  </div>
+      	</header>
+   		
+    	
+
+<article>
+  
+  <h2>
+    <a href="https:&#x2F;&#x2F;interstellar.boats&#x2F;moonbig&#x2F;">
+    Is the Moon big?
+    </a>
+  </h2>
+  <p style="font-size:90%;">Posted on <time datetime="2026-06-10T00:00:00+00:00">June 10, 2026</time></p>
+  
+
+  <p>No, it stays more or less the same size, grows or shrinks a bit throughout it's orbit. What about the phases though? Are they shrinking or growing? How full is the moon right now?</p>
+<p>In the top right corner of this website, there is now a moon. That moon is relatively accurately displaying the percentage of the moon that is full to the second<sup class="footnote-reference"><a href="#1">1</a></sup>.</p>
+<h2 id="the-math">The math</h2>
+<p>Initially I went to <a rel="noopener" target="_blank" href="https://en.wikipedia.org/wiki/Lunar_phase#Calculating_phase_size">Wikipedia which had a bit of math without reference</a><sup class="footnote-reference"><a href="#3">2</a></sup>, so I had to keep looking for a proper reference algorithm to implement. Following on from there I went to <a rel="noopener" target="_blank" href="https://science.nasa.gov/moon/moon-phases/">NASA</a>, and with some digging only found <a rel="noopener" target="_blank" href="https://science.nasa.gov/moon/daily-moon-guide/">some fun interactive bits</a> and an unintended for public use API behind <a rel="noopener" target="_blank" href="https://science.nasa.gov/moon/moon-phases/">another of their pages</a>. No fun mathy details to be found. As much I as trust NASA to be accurate, and could <em>probably</em> get away with using the API, the moon has a fairly consistent orbit and phases, so an mathematically deduced approximation seemed like it should be possible.</p>
+<p>I continued my search and stumbled onto <a rel="noopener" target="_blank" href="https://celestialprogramming.com">celestialprogramming.com</a> which is a wonderful website by Greg Miller, with JS implementations of a variety of algorithms around celestial orbits and other such details. The one I needed comes from the <a rel="noopener" target="_blank" href="https://celestialprogramming.com/meeus-illuminated_fraction_of_the_moon.html">"Illuminated Fraction of the Moon"</a> page.</p>
+<p>This is an implementation from the book <a rel="noopener" target="_blank" href="https://duckduckgo.com/?q=%22Astronomical%20Algorithms%22%20by%20Jean%20Meeus%20(1991)">"Astronomical Algorithms" by Jean Meeus (1991)</a>. This book is wonderful, and is the exact kind of mathematical reference I was looking for at the start.</p>
+<p>Miller's JS example has been accurate to the the NASA API so far, and is delightfully public domain, perfect for this little moon project. The only modifications needed were to trim down the calculations to the moon percentage of right now, and to also check for yesterday's percentage so that we could determine whether the moon was waxing or waning. We were off to the races.</p>
+<h2 id="the-display">The display</h2>
+<p>On page load we calculate the percentage of the moon that should be filled. That JS adjusts the CSS attributes of 2 div's which overlap, giving some amount of a crescent shape and updates the title.</p>
+<p>The CSS adjustments shift, how far part they are as well as their angle since everything is flipped 180 when decreasing vs increasing, meaning we start from only the silhouette in the background visible and slowly a crescent moon fills it out as the covering div slides to reveal the lit up portion. That covering div is 90% opaque, so that the full outline of the circular moon behind it.</p>
+<div class="image_panel">
+<p><img src="/2026/06/crescent_moon.png" alt="Crescent Moon Display" /></p>
+</div>
+<p>As the phases progress we go from reasonably accurate crescent to exceptionally inaccurate gibbous visualization. I prefer how the chubby crescent looks more than not-quite-circle representation<sup class="footnote-reference"><a href="#2">3</a></sup> I was coming up with, so I went with this. It's conveys where we are in the cycle well enough.</p>
+<div class="image_panel">
+<p><img src="/2026/06/gibbous_moon.png" alt="The wonderfully inaccurate gibbous moon." /></p>
+</div>
+<p>The angle the moon is tilted probably doesn't resemble the angle for where you live. Apparently that varies by latitude, and I don't want the site asking for your location, so that is stuck at roughly what it looks like in my sky. Going with the middle ground of no angle set also looked wrong.</p>
+<div class="image_panel">
+<p><img src="/2026/06/equator_moon.png" alt="Moon uncomfortably, perfectly, level..." /></p>
+</div>
+<h3 id="the-title-attribute">The title attribute</h3>
+<p>Lastly, I wanted the exact number and direction and such to be available. To that end, the info is added to the <code>title</code> attribute on the moon. Now in addition to explaining that it cycles the theme, you also get a bit of info about the moon.<sup class="footnote-reference"><a href="#4">4</a></sup></p>
+<hr />
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>The second that the page was loaded, not continuously updating in real time.</p>
+</div>
+<div class="footnote-definition" id="2"><sup class="footnote-definition-label">3</sup>
+<p>I'm not entirely sure that I was trying to achieve the same thing as what their section on phase size was going for, so I have opted not to update the Wikipedia page. Also because I still don't have a fantastic grasp of all of the constants going into the algorithm to properly explain it at a Wikipedia article's high level.</p>
+</div>
+<div class="footnote-definition" id="3"><sup class="footnote-definition-label">2</sup>
+<p>The difficulty was the also in the desire for this to be one continuous animation. Had I been alright with a series cycling stills it would've made more sense in my mind to have them be accurate visually.</p>
+</div>
+<div class="footnote-definition" id="4"><sup class="footnote-definition-label">4</sup>
+<p>This doesn't work well on mobile, so I'll be adjusting that (and some other hover-only features of the site) in the near-ish future.</p>
+</div>
+
+</article>
+
+      <div id="footer" >
+        <div style="text-align: center;padding:100px">
+        ~
+        </div>
+      </div>
+      </div>
+   </main>
+    
+    
+  </body>
+</html>

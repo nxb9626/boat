@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en" id="root_html" class="WoB">
+  
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="me" href="https://mas.to/@ncb"></link>
+		<title>Interstellar Boats</title>
+    <meta name="description" content="Code, Dumb Jokes, Loose Space Themes, etc. " />
+    <link rel="shortcut icon"  href="https://interstellar.boats/favicon.ico" />
+    <link rel="alternate" type="application/atom+xml" title="RSS" href="https://interstellar.boats/atom.xml">
+
+    <!-- If you are concerned about the dark/lightmode switch, me too.... -->
+    <script src="/themes.js" loading="lazy"></script>
+    <script src="/moon.js" ></script>
+    <noscript><style>.sun{ display: none }</style></noscript>
+    <link rel="stylesheet" href="/style.css">
+
+    <meta property="og:site_name" content="Interstellar Boats">
+      <meta name="author" content="no" />
+      <meta property="og:title" content="Interstellar Boats">
+      <meta property="og:description" content="Code, Dumb Jokes, Loose Space Themes, etc. ">
+      <meta property="og:url" content="https://interstellar.boats">
+      <meta property="og:image" content="">
+
+      <meta property="og:type" content="article" />
+        <meta property="article:published_time" content="2025-12-31T00:00:00+00:00" />
+
+      
+      
+    
+ </head>
+  
+
+  <body>
+		<main id="main" role="main">
+  		<div class="sun_container">
+        <div id="moon" class="moon moon_increasing" onclick="cycleTheme()" title="Toggle between light and dark modes.">
+          <div id="earth" class="earth">
+            <div id="sun" class="sun"></div>
+          </div>
+        </div>
+    </div>
+      <div style="display:flex; flex-direction: row;">
+        <div>
+          <div class="logo" >
+      		    <a href="https://interstellar.boats" title="Home">
+            INTERSTELLAR.BOATS
+            </a>
+          </div>
+      
+		    <header role="banner">
+   		    <div style="margin-top:0;">
+              <div style="display:flex;flex-direction:column;">
+               
+                <nav class="navbar" role="navigation">
+                  
+                    <a href="https://interstellar.boats">home</a>
+                  
+                    <a href="https://interstellar.boats#archive">archive</a>
+                  
+                    <a href="https://interstellar.boats/projects">projects</a>
+                  
+                    <a href="https://interstellar.boats/about">about</a>
+                  
+                    <a href="https://interstellar.boats/rss.xml">rss</a>
+                  
+                </nav>
+                
+              </div>
+    	 	      <br />
+     		  </div>
+      	</header>
+   		
+    	
+
+<article>
+  
+  <h2>
+    <a href="https:&#x2F;&#x2F;interstellar.boats&#x2F;2025-decemberadventure&#x2F;">
+    December Adventure
+    </a>
+  </h2>
+  <p style="font-size:90%;">Posted on <time datetime="2025-12-31T00:00:00+00:00">December 31, 2025</time></p>
+  
+
+  <p>Welcome to my December Adventure Log!</p>
+<p>Usually these are relatively coding related and focused on doing what you want
+and what you can.
+<a rel="noopener" target="_blank" href="https://eli.li/december-adventure-2">Eli has a more complete explanation</a>.</p>
+<p>This reads in reverse chronological order, <a href="https://interstellar.boats/2025-decemberadventure/#day-0">so start at the bottom</a> and
+read on up if you'd like!</p>
+<h1 id="day-31">Day 31</h1>
+<p>This concludes my adventure.</p>
+<ul>
+<li>Made solid progress on the game, and learning Godot</li>
+<li>Moved to a new apartment</li>
+<li>Celebrated the holidays with friends and family</li>
+<li>Worked around a networking nuisance</li>
+</ul>
+<p>I'll clean up the proxy setup instructions into their own more instructional
+post soon and keep working on the game.</p>
+<hr />
+<p>Lastly, turned on some <a href="https://interstellar.boats/2025-decemberadventure/getzola.org/"><em>Zola</em></a> features that I had apparently
+been missing. External links now open a new tab, and notable for this post is
+the auto generated <code>id</code>s added to headers, so that the <a href="https://interstellar.boats/2025-decemberadventure/#day-0">link to Day 0</a>
+works.</p>
+<h1 id="day-30">Day 30</h1>
+<p>Got billing for the cloud hosted VM figured out, fun combination of new
+address + out of town + setting up a new service was causing issues yesterday.</p>
+<p>So now, the ramblings of setting up the MC proxy:</p>
+<p>On the VM setup Tailscale:</p>
+<ol>
+<li>Setup correct ssh key for device we're connecting from (laptop in my case)</li>
+<li>Ssh in and install <a rel="noopener" target="_blank" href="https://tailscale.com/download/linux">tailscale</a></li>
+</ol>
+<p>The order of these could in theory be swapped and the initial connection be done
+through a terminal on the web, but personally I prefer the old fashioned ssh key
+setup</p>
+<p>On <a rel="noopener" target="_blank" href="https://login.tailscale.com/admin/machines">Tailscale dashboard</a></p>
+<ol start="3">
+<li>Rename machine to <code>monarch</code> for ease of identification, and because this is a
+pet, not cattle</li>
+</ol>
+<p>Back On <code>monarch</code>:</p>
+<ol start="4">
+<li><code>apt install tmux</code>, for ease of disconnection and picking back up, and since
+it's where live when in a command line environment</li>
+<li>(on the dashboard for the vm:) Create firewall:
+<ul>
+<li>inbound rules allowing TCP &amp; UDP on 25565</li>
+<li>remove inbound to port 22, since we'll do that there via Tailscale's
+connection</li>
+</ul>
+</li>
+</ol>
+<p>Here's where we fall apart for a bit. On <code>monarch</code></p>
+<ol start="6">
+<li>Try to setup port forwarding with ssh,
+<ul>
+<li><code>-L</code>, <code>-D</code>, and <code>-R</code> all didn't seem to work, even after properly setting
+up keys between the two</li>
+</ul>
+</li>
+<li>Try <code>netcat</code> piping to a temp file then catting that back out.</li>
+</ol>
+<pre style="display: flex; justify-content: center; align-items:center"> 
+<code>
+nc -l -p 25565 0</tmp/fifo  | nc marble 25565 1>/tmp/fifo
+</code>
+</pre>
+<blockquote>
+<p>This failed for some unexplained reason, but seemed hacky even by my standards
+so kinda ok with pivoting</p>
+</blockquote>
+<ol start="8">
+<li>
+<p>install <a rel="noopener" target="_blank" href="https://caddyserver.com/">caddy</a></p>
+<ul>
+<li>then install <a rel="noopener" target="_blank" href="https://github.com/caddyserver/xcaddy">xcaddy</a></li>
+<li><del>try to install through apt</del></li>
+<li><del>install <a rel="noopener" target="_blank" href="https://go.dev/">go</a> and use that install method</del></li>
+<li><del>give up on actually finding where <code>go</code> installed <code>xcaddy</code></del></li>
+<li><del>install by using the directly downloaded binary on github, get runtime
+error on running it</del></li>
+</ul>
+<p>This isn't working, can't even get the to point of installing the l4 caddy
+extension (<a rel="noopener" target="_blank" href="https://github.com/mholt/caddy-l4">caddy-l4</a>) that is needed for
+this, which does look like exactly what I need</p>
+</li>
+<li>
+<p>Uninstall <code>caddy</code> and the <code>xcaddy</code>s and <code>go</code> and pivot again</p>
+</li>
+<li>
+<p>Try forwarding with <code>socat</code></p>
+</li>
+</ol>
+<pre style="width:98%; margin-left:-3%; display: flex; justify-content: center; align-items:center"> 
+<code>
+socat TCP4-LISTEN:25565,fork TCP4:marble:25565
+</code>
+</pre>
+<h2 id="it-works">IT WORKS!</h2>
+<ol start="11">
+<li>Run it in a tmux session. This is still hacky, so we'll clean up tomorrow.
+but for now this is fine.</li>
+<li>Disconnect from the <code>tmux</code> session and call it good for the day. Can work on
+a more permanent solution later</li>
+<li>Update servers domain to direct to to this VM's IP, using an A Record DNS
+record</li>
+</ol>
+<p>Socat was <em>already</em> installed, so this should have been one of the first things
+worth trying. Live and learn.</p>
+<hr />
+<p>Also, updated the css again after writing the above to include <code>ol</code>, and be
+based on characters so that it scales consistently regardless of zoom level:</p>
+<pre data-lang="css" class="language-css "><code class="language-css" data-lang="css">ul, ol {
+  padding-left: 3ch;
+}
+</code></pre>
+<h1 id="day-29">Day 29</h1>
+<p>Small CSS tweak which vastly improves the look of this website.</p>
+<p>Style stolen from <a rel="noopener" target="_blank" href="https://matklad.github.io">Matklad</a>, these two lines of CSS
+make the right edge of all of the text on my site here line up just about
+perfectly, without leaving excessive space between shorter words on shorter
+lines.</p>
+<pre data-lang="css" class="language-css "><code class="language-css" data-lang="css">body {
+  text-align: justify;
+  hyphens: auto;
+}
+</code></pre>
+<p>In addition I made a small tweak to the <code>ul</code>, which reduces it's left padding by
+15px.</p>
+<pre data-lang="css" class="language-css "><code class="language-css" data-lang="css">ul {
+  padding-left: 25px;
+}
+</code></pre>
+<p>Much subtler change but means nesting bulleted lists don't reduce the line width
+as much as they otherwise would.</p>
+<hr />
+<p>It's a cube! and it spins!</p>
+<div class="image_panel">
+	<video autoplay loop src="http://127.0.0.1:1111/2025/12/jumping_cube.webm">
+	</video>
+</div>
+<p>Opened up the game project and tinkered with getting spin on jump working. It's
+not spinning exactly how I'd planned going in but I think this random cycle is
+more fun for now.</p>
+<h1 id="day-24-28">Day 24-28</h1>
+<p>Holiday tech support:</p>
+<ul>
+<li>
+<p>Lousy Looper Logic</p>
+<ul>
+<li>Micro-USB cable found for looper to connect to the computer</li>
+<li>This was then flashed with new firmware so we can now load audio files to
+loop from said computer.</li>
+</ul>
+</li>
+<li>
+<p>Dying Laptop Dismay</p>
+<ul>
+<li>Ram or motherboard or CPU going bad, and can't be swapped out on this 2019
+ThinkPad.</li>
+<li>Confirmed not
+<a rel="noopener" target="_blank" href="https://www.todepond.com/wikiblogarden/better-computing/just/">just</a> a
+Windows issue through a boot via USB to <a rel="noopener" target="_blank" href="https://kubuntu.org/">Kubuntu</a>,
+resulting in the same inconsistent freezing fixable only via a forced reboot</li>
+<li>New laptop decided on, in this case a MacBook Air which should be excessive
+for nearly everything</li>
+</ul>
+</li>
+</ul>
+<hr />
+<p>Finishing off today by drumming a bit then updating the page here. I've got
+access to a full kit for a bit, which is entirely unlike to the electric mesh
+pad + low volume cymbal kit I'm usually on. Fun to tap terribly along to
+<a rel="noopener" target="_blank" href="https://www.sungazermusic.com/">Sungazer</a>,<br />
+<a rel="noopener" target="_blank" href="https://knowertour.com/">Knower</a> and many others.</p>
+<h1 id="day-23">Day 23</h1>
+<p>Began a new project for the adventure, which is actually picking up an idea from
+last year since it now seems necessary.</p>
+<p>My new apartment came prepackaged with an ISP, which won't let me port forward
+for a minecraft server without an additional charge. <em>So</em> I will be setting up a
+tunnel to a VPS for the port and paying for that instead.</p>
+<p>This is also theoretically more secure and will also set me up for more
+self-hosty stuff, so I don't mind this hassle too much. It does still feel like
+an unnecessary hassle in what was otherwise a straightforward move.</p>
+<h1 id="day-16">Day 16</h1>
+<p>In the calm before the storm I tried to play
+<a rel="noopener" target="_blank" href="https://store.steampowered.com/app/3527290/PEAK/">PEAK</a> with friends.</p>
+<p>I'm not sure what updated, but something changed after an <code>apt-get update</code> on mh
+Ubuntu install that broke the game, and it would not run for more than a few
+seconds, and was consistently failing after an alt tab.</p>
+<p>The fastest way to get this working was to follow the first tutorial I could
+find to swap to KDE. This feels like it should not have been the solution, but
+here we are.</p>
+<p>In the future I think I'll be looking for a distro that will let me roll back
+updates more easily. In this situation I didn't want a solution to the problem
+immediately since there are probably a million options and I didn't want filter
+thorugh and try things and find the one thing that happened to fix it without
+breaking other things. An alternative tool eneded up working this time but "just
+use this instead" isn't a solution either. At that moment all I wanted was the
+previous setup that was working before something changed.</p>
+<p>NixOS or GUIX or something similar is probably the real solution here, but it'd
+be nice if I didn't need to change around everything.</p>
+<h1 id="day-11-15">Day 11 - 15</h1>
+<p>My adventure took a fun but unexpected pivot, so this project was put on hold
+for a bit.</p>
+<p>The rest of this week and next weekend will be filled with the expected
+interruption of moving, primarily in terms of packing. Ideally will pick up this
+project again next week.</p>
+<hr />
+<p>In the meantime I've been thinking about the character in this game. It might
+make more sense (from a practicality standpoint and a lore standpoint) for this
+to be a "city" under construction. Our character could then be a component of
+the city that's making it's way to it's spot. This could explain why large
+chunks of the area are off limits / out of bounds for the player.</p>
+<p>I'll continue to think on this.</p>
+<h1 id="day-10">Day 10</h1>
+<p>Woo day 10! Idk, this game doesn't look 1/3 done, even though this month is.</p>
+<p>Of the systems need to understand and make work, I have:</p>
+<ul>
+<li>camera</li>
+<li>lighting</li>
+<li>geometry</li>
+<li>enough character movement for a walking sim</li>
+</ul>
+<p>And still need:</p>
+<ul>
+<li>sound
+<ul>
+<li>effects</li>
+<li>music</li>
+</ul>
+</li>
+<li>character
+<ul>
+<li>design</li>
+<li>feel
+<ul>
+<li>better jumping</li>
+<li>better sprinting</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>world
+<ul>
+<li>moving bits</li>
+<li>reactionary bits</li>
+<li>the actual build out of the city</li>
+</ul>
+</li>
+</ul>
+<p>I think to trim everything, this may become a walking sim. I've been enjoying
+the planning and building this world. May swap to 1st person if I can't get a
+character design working that "fits" the feel. I see why NaissancE was first
+person, no way to make a character that fits that world and mine is (hopefully
+clearly) inspired a lot by that game aesthetically.</p>
+<h1 id="day-9">Day 9</h1>
+<p>Today spent a bit of time laying out the city at a very high level.</p>
+<div class="image_panel">
+<p><img src="/2025/12/city_layout.svg" alt="Layout of city, in svg form" /></p>
+</div>
+<p>Did this up in <a rel="noopener" target="_blank" href="https://www.tldraw.com">TLDraw</a>, then exported as svg. There are
+some limitations with using svg's in Godot, but for being an outline to fill in
+this has been working out fine.</p>
+<p>It is going to be a <em>lot</em> to fill in, so may need to limit scope down and pick a
+path or subsection to we'll be working through in this game. I would like the
+full city to be explorable eventually but its currently ~3500m^2, so there's no
+way that's going to get properly filled in with the detail it needs this month.</p>
+<h1 id="day-8">Day 8</h1>
+<p>Had some fun and made the car for the gondola transit system. Gave it some
+lights on the inside and everything.</p>
+<div class="image_panel">
+<p><img src="/2025/12/gondola.png" alt="Gondola car, with seat and lights inside." /></p>
+</div>
+<p>I am realizing now that it is a pain to have the camera jumping when walking
+around in the car, so may have to rethink/adjust some things in that regard.</p>
+<p>I am also a <em>bit</em> concerned about the performance concerns that could come form
+relying on tons of shapes. But that's a problem for later me.</p>
+<h1 id="day-7">Day 7</h1>
+<p>D&amp;D night! My gnome bard continued his adventure, and otherwise I went for a
+longer run with more sunlight today and did not do much else.</p>
+<p>Didn't get <em>much</em> time in on the game today. Did confirm that you can build
+basic interiors like I wanted by adding boxes that subtract. Functions similarly
+to Unreal Engine, which makes it intuitive for me, and hopefully cover enough of
+my 3d modeling needs.</p>
+<div class="image_panel">
+<p><img src="/2025/12/hallway.png" alt="A hallway to nowhere with a omnilight emanating from it" /></p>
+</div>
+<h1 id="day-6">Day 6</h1>
+<p>Today I:</p>
+<ul>
+<li>Went for a short run</li>
+<li>Walked around downtown w/ friends</li>
+<li>Stopped by the library and checked out the roof which is available to the
+public apparently. Bit cold for it today and not a wild view in any direction
+but still was cool</li>
+</ul>
+<h1 id="day-5">Day 5</h1>
+<ul>
+<li><input disabled="" type="checkbox" checked=""/>
+Basic reusable pylon shapes made</li>
+<li><input disabled="" type="checkbox" checked=""/>
+Basic menacing building in background made</li>
+</ul>
+<div class="image_panel">
+<p><img src="/2025/12/pylons.png" alt="Pylons and building" /></p>
+</div>
+<p>This looks like progress but is effectively not much more than shapes on a
+screen.</p>
+<p>What's cool is each of the pylons is a scene, so I can re-use them, and they can
+have their own logic running within them. What they need to truly work great is
+a bit of logic connecting them together in a chain. But that's more detail than
+we're going for here.</p>
+<p>Still thinking through exactly what I want the path to look like, so no sketch
+of the layout today.</p>
+<p>Looked a bit in to volumetric fog but that'll need more tinkering and research.</p>
+<h1 id="day-4">Day 4</h1>
+<p>Tired ramblings, but not travel induced this time and generally focused on
+planning out this game.</p>
+<p>I'm not sure how weather should/would work in this world.
+<del><a rel="noopener" target="_blank" href="https://www.clickorlando.com/moon-landing/2019/07/03/inside-the-vab-at-kennedy-space-center/">Clouds, or at least</a></del>
+Fog can form within large enough buildings but I'm not quite sure how the
+condensation could precipitate operate. For sure Details for later, but
+something to consider when working on laying it all out. (even if what gets
+built is all dry.)</p>
+<p>But the layout itself, I'm thinking a sorta train station vibe. Well, more a
+cable car/ski lift/gondola based transit system. This will be <em>heavily</em>
+abstracted into hollow rectangle you can step into that moves ( ideally, it will
+start as immobile and just there for show ). But it should suggest the idea a
+gondola, and I should work on this instead of writing about it. So that I have a
+todo list:</p>
+<ul>
+<li><input disabled="" type="checkbox"/>
+sketch what the entrance to this looks like, so that it can be built</li>
+<li><input disabled="" type="checkbox"/>
+build a pylon that can be reused in places</li>
+<li><input disabled="" type="checkbox"/>
+build some super basic building off in the distance (literally a
+rectangle)</li>
+<li><input disabled="" type="checkbox"/>
+look into fog area affects in Godot, so that the abyss below is an abyss
+below (maybe like
+<a rel="noopener" target="_blank" href="https://mas.to/@ncb/115454784284549026">day 28 of drawtober</a>)</li>
+</ul>
+<p>In terms of gameplay, descending down into a city below to make your way to the
+top of that tower sticking up out over the mist would be cool, and a clear
+target to aim for. That would require building a large portion of a city. Let's
+start with the building you start in and fill in the gaps to get to the building
+you're aiming for.</p>
+<h1 id="day-3">Day 3</h1>
+<p>Travel day: travel rambles!</p>
+<ul>
+<li>Would have been yesterday, but weather got in the way</li>
+<li>Flying is always fun, but I am exhausted so not squeezing in technical work
+today</li>
+<li>Packing a
+<a rel="noopener" target="_blank" href="https://www.pennyskateboards.com/collections/22-skateboards">Penny board</a> for
+the flight back has been surprisingly fine, no concerns from security (Which I
+guess why would there be?). Not useful for the small airport I've been sitting
+at though.</li>
+</ul>
+<p>I think the architecture of airports could be a good source of inspiration for
+some of the building in the game. Lots of fun hallways and several floor levels,
+with clear paths you should and some where you <em>shouldn't</em> go. Should have
+snapped some pics for reference. Maybe next flight.</p>
+<p>While waiting for the flight I watched/listened to the
+<a rel="noopener" target="_blank" href="https://www.youtube.com/watch?v=mfv0V1SxbNA">Linus Torvalds interview on LTT</a>.
+Mostly it was just a fun video. "Do anything once", "Respond in 15 minutes or
+delete it" (for e-mail), and "If I knew how much work it would've been I
+wouldn't have done it" (re: starting the linux project) were some fun lines from
+Torvalds. Not quite words to live by but certainly fun words to consider.</p>
+<p>Note from mid flight:</p>
+<blockquote>
+<p>Once on the plane, if your phone charger doesn't work in the outlet
+immediately try again after take off. Don't just unplug from the phone. Unplug
+from the outlet as well and plug it back in.</p>
+</blockquote>
+<p>Listened to the <a rel="noopener" target="_blank" href="https://www.relay.fm/cortex/173">Cortex episode</a> featuring Hank
+Green during the flight.</p>
+<ul>
+<li>It was good.</li>
+<li>I do not have
+<a rel="noopener" target="_blank" href="https://en.wikipedia.org/wiki/Hank_Green#Works">as many or as varied of projects</a>
+Hank Green.</li>
+<li>I think I could do with a bit more of that kinda chaos.</li>
+<li>Bonus section at the end, with more John Gruber. It was also good.</li>
+</ul>
+<p>Getting off the last train home I got to use the penny board. I think it halved
+the time it would've take to walk from the stop, saved a whole 3 minutes maybe.
+It was a blast.</p>
+<p>Only had the energy for listening to stuff today, no mid-travel tinkering.
+Collapsing now that I'm home.</p>
+<h1 id="day-2">Day 2</h1>
+<p>Getting over a light cold tonight, fixed the image that was posted yesterday so
+that it shows up correctly. I think that's enough for tonight.</p>
+<h1 id="day-1">Day 1</h1>
+<p>Dinked around a bit with stuff in the engine. Been using a
+<a rel="noopener" target="_blank" href="https://github.com/fdemir/real-controller">premade 3d character</a>, and am
+working on adjusting that a bit. The 3d model is a bit more detail than I'm
+ready to work with for the moment, so it's been swapped for a block.</p>
+<div class="image_panel">
+<p><img src="/2025/12/rectangle.png" alt="The Rectangle, on a small square of " /></p>
+</div>
+<p>Also featured are some cubes in the background from earlier tinkering.</p>
+<h1 id="day-0">Day 0</h1>
+<p>My <a href="/2024-12-decemberadventure">2024 December Adventure</a> was broad in
+scope and occasionally dubious of consistent coding, instead branching out into
+repair, musical noodling and compatibility ramblings. This was fun but also left
+the month feeling lacking on a concrete bit of progress on real projects.</p>
+<p>This year I'll be focusing primarily<sup class="footnote-reference"><a href="#1">1</a></sup> on building a game in Godot. A game
+should overlap many interests, so regardless of what I do it'll usually be
+moving the game forward. After some tinkering with the engine this November I'm
+feeling fairly confident going in, but I've never built a full "game" so we'll
+see exactly what shape this end result takes.</p>
+<div class="footnote-definition" id="1"><sup class="footnote-definition-label">1</sup>
+<p>I have every expectation I'll be distracted by side quests, and have a busy
+month ahead of me. Expect anything and everything in these updates.</p>
+</div>
+
+</article>
+
+      <div id="footer" >
+        <div style="text-align: center;padding:100px">
+        ~
+        </div>
+      </div>
+      </div>
+   </main>
+    
+    
+  </body>
+</html>

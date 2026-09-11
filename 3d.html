@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>WebGPU Rotating Cube</title>
+  <style>
+    /* Add some styles to make it look nicer */
+    canvas {
+      border: 1px solid black;
+    }
+  </style>
+</head>
+<body>
+  <canvas id="myCanvas" width="400" height="300" style="position: fixed;"></canvas>
+  <script>
+    // Get the canvas element
+    const canvas = document.getElementById('myCanvas');
+    const gpu = canvas.getContext('webgpu');
+
+    // Set the canvas dimensions
+    canvas.width = 400;
+    canvas.height = 300;
+
+    // Define some constants for our cube's size and rotation speeds
+    const CUBE_SIZE = 100;
+    const ROTATION_SPEED_X = 0.1;
+    const ROTATION_SPEED_Y = 0.2;
+    const ROTATION_SPEED_Z = 0.3;
+
+    // Initialize the cube's rotation angles
+    let angleX = 0;
+    let angleY = 0;
+    let angleZ = 0;
+
+    // Add an event listener for requestAnimationFrame to update the cube's rotation and draw it on the canvas
+    function animate() {
+      // Update the cube's rotation angles
+      angleX += ROTATION_SPEED_X;
+      angleY += ROTATION_SPEED_Y;
+      angleZ += ROTATION_SPEED_Z;
+
+      // Create a WebGPU pipeline for our cube
+      const pipeline = gpu.createPipeline({
+        layout: 'auto',
+        shaderModules: [
+          {
+            type: 'vertex',
+            code: `
+              attribute vec3 position;
+              uniform mat4x4 modelViewMatrix;
+              uniform mat4x4 projectionMatrix;
+
+              void main() {
+                gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+              }
+            `,
+          },
+          {
+            type: 'fragment',
+            code: `
+              void main() {
+                gl_FragColor = vec4(1.0, 0.5, 0.2, 1.0); // Red-ish color for the cube
+              }
+            `,
+          },
+        ],
+      });
+
+      // Create a WebGPU buffer to store our cube's vertices and indices
+      const vertexBuffer = gpu.createBuffer({
+        size: CUBE_SIZE * 3,
+        usage: GPUBufferUsage.VertexAttribute,
+      });
+      gpu.bindVertexBuffer(0, vertexBuffer, 0);
+
+      // Create a WebGPU buffer to store our cube's index data
+      const indexBuffer = gpu.createBuffer({
+        size: (CUBE_SIZE * 6) * 4,
+        usage: GPUBufferUsage.IndexElement,
+      });
+      gpu.bindIndexBuffer(indexBuffer, 0, 'uint32');
+
+      // Set up our model-view and projection matrices for rotation and perspective
+      const modelViewMatrix = new Float32Array(16);
+      const projectionMatrix = new Float32Array(16);
+      gpu.setPipeline(pipeline);
+      gpu.setVertexBuffer(0, vertexBuffer);
+      gpu.setIndexBuffer(indexBuffer);
+
+      // Draw the cube on the canvas
+      gpu.drawIndexedTriangles(CUBE_SIZE * 6, 0, CUBE_SIZE * 3);
+
+      // Request the next frame to update and draw our cube
+      requestAnimationFrame(animate);
+    }
+
+    // Start animating our cube's rotation and drawing it on the canvas
+    animate();
+  </script>
+</body>
+</html>

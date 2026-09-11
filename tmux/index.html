@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" id="root_html" class="WoB">
+  
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="me" href="https://mas.to/@ncb"></link>
+		<title>Interstellar Boats</title>
+    <meta name="description" content="Code, Dumb Jokes, Loose Space Themes, etc. " />
+    <link rel="shortcut icon"  href="https://interstellar.boats/favicon.ico" />
+    <link rel="alternate" type="application/atom+xml" title="RSS" href="https://interstellar.boats/atom.xml">
+
+    <!-- If you are concerned about the dark/lightmode switch, me too.... -->
+    <script src="/themes.js" loading="lazy"></script>
+    <script src="/moon.js" ></script>
+    <noscript><style>.sun{ display: none }</style></noscript>
+    <link rel="stylesheet" href="/style.css">
+
+    <meta property="og:site_name" content="Interstellar Boats">
+      <meta name="author" content="no" />
+      <meta property="og:title" content="Interstellar Boats">
+      <meta property="og:description" content="Code, Dumb Jokes, Loose Space Themes, etc. ">
+      <meta property="og:url" content="https://interstellar.boats">
+      <meta property="og:image" content="">
+
+      
+
+      
+      
+    
+ </head>
+  
+
+  <body>
+		<main id="main" role="main">
+  		<div class="sun_container">
+        <div id="moon" class="moon moon_increasing" onclick="cycleTheme()" title="Toggle between light and dark modes.">
+          <div id="earth" class="earth">
+            <div id="sun" class="sun"></div>
+          </div>
+        </div>
+    </div>
+      <div style="display:flex; flex-direction: row;">
+        <div>
+          <div class="logo" >
+      		    <a href="https://interstellar.boats" title="Home">
+            INTERSTELLAR.BOATS
+            </a>
+          </div>
+      
+		    <header role="banner">
+   		    <div style="margin-top:0;">
+              <div style="display:flex;flex-direction:column;">
+               
+                <nav class="navbar" role="navigation">
+                  
+                    <a href="https://interstellar.boats">home</a>
+                  
+                    <a href="https://interstellar.boats#archive">archive</a>
+                  
+                    <a href="https://interstellar.boats/projects">projects</a>
+                  
+                    <a href="https://interstellar.boats/about">about</a>
+                  
+                    <a href="https://interstellar.boats/rss.xml">rss</a>
+                  
+                </nav>
+                
+              </div>
+    	 	      <br />
+     		  </div>
+      	</header>
+   		
+    	
+
+<article>
+  
+
+  <h1 id="tmux"><a rel="noopener" target="_blank" href="https://github.com/tmux/tmux/wiki">Tmux</a></h1>
+<p>Commands/shortcuts that I forget if I don't use them often enough in tmux,
+followed by some config info for a setting up a new tmux situation.</p>
+<h2 id="things-i-forget">Things I Forget</h2>
+<p>Especially when I don't use them often.</p>
+<h3 id="ctrl-b-z">Ctrl-b, z</h3>
+<p>Full-screens the active pane, great for quickly focusing on something</p>
+<h3 id="right-click-menu">Right click menu</h3>
+<p>Tmux has a right click menu and that's real the reminder here. Clicking and
+dragging to re-size windows comes naturally, but right-clicking is always
+rediscover by mistake. Contains several small useful things for switching around
+panes.</p>
+<h2 id="my-config"><a rel="noopener" target="_blank" href="https://github.com/nxb9626/.config/blob/main/tmux/tmux.conf">My Config</a></h2>
+<p>The modifications explained briefly:</p>
+<ul>
+<li>Overrides for better color bits. The specifics depend on machine</li>
+<li>Enables the mouse</li>
+<li>Sets h/j/k/l for jumping between panes</li>
+<li>Sets new splits and windows to open in current directory</li>
+</ul>
+<p>Depending on the machine these other tweaks may be necessary or helpful.</p>
+<p>On MacOS:</p>
+<pre><code>set -ag terminal-overrides &quot;,$TERM:RGB&quot;
+set -s escape-time 0
+</code></pre>
+<p>On Ubuntu:</p>
+<pre><code>set -g default-terminal &#x27;screen-256color&#x27;`
+</code></pre>
+<p>Lastly, when I highlight text with my mouse while in a tmux session it places
+that on my system clipboard. I had assumed I configured this in tmux, but now
+I'm now not sure since I don't see anything for it.</p>
+
+</article>
+
+      <div id="footer" >
+        <div style="text-align: center;padding:100px">
+        ~
+        </div>
+      </div>
+      </div>
+   </main>
+    
+    
+  </body>
+</html>
